@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Developer Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo">DEV_PORTFOLIO</div>
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#career">Career</a></li>
+            <li><a href="#resources">Resources</a></li>
+            <li><a href="#games">Games</a></li>
+        </ul>
+    </nav>
+
+    <header class="header">
+        <div class="header-content">
+            <div class="profile-pic">
+                <img src="https://via.placeholder.com/150" alt="Profile Picture">
+            </div>
+            <h1>Web App Developer</h1>
+            <p>Building the future of the web, one pixel at a time.</p>
+        </div>
+    </header>
+
+    <main>
+        <section id="about" class="section">
+            <h2>About Me</h2>
+            <p>As a seasoned Web App Developer, I specialize in creating seamless, user-centric digital experiences. My approach blends technical rigor with minimalist design, ensuring that every application is as functional as it is beautiful. I thrive on solving complex problems through clean, efficient code.</p>
+        </section>
+
+        <hr>
+
+        <section id="career" class="section">
+            <h2>Career</h2>
+            <div class="career-item">
+                <h3>Senior Full-Stack Developer</h3>
+                <p>Leading development teams to deliver scalable SaaS solutions and high-performance web applications.</p>
+            </div>
+            <div class="career-item">
+                <h3>Frontend Engineer</h3>
+                <p>Focused on responsive design, performance optimization, and modern JavaScript frameworks.</p>
+            </div>
+        </section>
+
+        <hr>
+
+        <section id="resources" class="section">
+            <h2>Upload Resources</h2>
+            <div class="upload-container">
+                <input type="file" id="fileUpload" hidden>
+                <label for="fileUpload" class="btn">Choose File</label>
+                <p id="file-name">No file chosen</p>
+                <button class="btn secondary" onclick="handleUpload()">Upload to Project</button>
+            </div>
+        </section>
+
+        <hr>
+
+        <section id="games" class="section">
+            <h2>Source Mini Games</h2>
+            <div class="game-container">
+                <p>Click the button as fast as you can!</p>
+                <div id="game-score">Score: 0</div>
+                <button class="btn" onclick="playGame()">Click Me!</button>
+                <button class="btn secondary" onclick="resetGame()">Reset</button>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Developer Portfolio | Created with Burgundy & Grey</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
