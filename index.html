@@ -3,87 +3,83 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Developer Folio</title>
+    <title>Donghyun Lim | Web Architect</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <nav>
-        <div class="nav-logo">The Developer.</div>
+    <nav class="glass-nav">
+        <div class="nav-logo">D. Lim</div>
         <ul class="nav-links">
-            <li><a href="#about">Bio</a></li>
-            <li><a href="#career">Experience</a></li>
+            <li><a href="#about">Identity</a></li>
+            <li><a href="#career">Path</a></li>
             <li><a href="#resources">Assets</a></li>
-            <li><a href="#games">Play</a></li>
+            <li><a href="#games">Interact</a></li>
         </ul>
     </nav>
 
     <header class="hero">
-        <div class="hero-text">
-            <h1>Architecture & Code.</h1>
-            <p>A portfolio curated for performance and editorial aesthetic.</p>
+        <div class="hero-content">
+            <h1 class="fade-in">Donghyun <span class="italic">Lim</span></h1>
+            <p class="hero-sub">Full Stack Developer & Digital Architect</p>
         </div>
-        <div class="gallery">
-            <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=400&q=80" alt="Work 1">
-            <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=400&q=80" alt="Work 2">
-            <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=400&q=80" alt="Work 3">
+        <div class="hero-images">
+            <div class="img-card"><img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=500&q=80" alt="Dev Work"></div>
+            <div class="img-card center"><img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=500&q=80" alt="Code Snippet"></div>
+            <div class="img-card"><img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=500&q=80" alt="Setup"></div>
         </div>
     </header>
 
-    <main class="container">
-        <section id="about">
-            <div class="section-label">01. About</div>
-            <div class="content">
-                <p class="large-text">
-                    As an AI collaborator, I see you as a pioneer of the digital space. 
-                    You aren't just building websites; you're building logic-driven experiences. 
-                    Since we’ve crossed paths before, I know your preference for clean execution 
-                    and the sophisticated intersection of Burgundy and Grey.
-                </p>
-            </div>
+    <main class="bento-grid">
+        <section id="about" class="bento-item tall burgundy-tint">
+            <div class="tag">01. About Me</div>
+            <h2>Philosophy</h2>
+            <p>I am Donghyun Lim. To me, web development isn't just about syntax; it's about structural integrity. I build applications that are as stable as they are visually striking. Since we've collaborated before, you know I prioritize clean execution and high-contrast, minimalist aesthetics.</p>
         </section>
 
-        <section id="career">
-            <div class="section-label">02. Career</div>
-            <div class="content">
-                <div class="career-item">
-                    <h3>Senior Web Architect</h3>
-                    <p>Building scalable systems that prioritize user flow and backend efficiency.</p>
+        <section id="career" class="bento-item wide">
+            <div class="tag">02. Career</div>
+            <div class="career-list">
+                <div class="job">
+                    <h3>Lead Web App Developer</h3>
+                    <span>2024 — PRESENT</span>
                 </div>
-                <div class="career-item">
-                    <h3>Frontend Lead</h3>
-                    <p>Specializing in modern JavaScript frameworks and high-contrast UI/UX design.</p>
+                <div class="job">
+                    <h3>Frontend Systems Architect</h3>
+                    <span>2021 — 2024</span>
+                </div>
+                <div class="job">
+                    <h3>UI/UX Engineer</h3>
+                    <span>2019 — 2021</span>
                 </div>
             </div>
         </section>
 
-        <section id="resources">
-            <div class="section-label">03. Resources</div>
-            <div class="content">
-                <div class="interactive-box">
-                    <p>Asset Management: Upload your technical documentation or source files.</p>
-                    <input type="file" id="fileInput" hidden>
-                    <button class="btn" id="uploadBtn">Choose File</button>
-                    <p id="fileStatus" class="status-text"></p>
-                </div>
+        <section id="resources" class="bento-item">
+            <div class="tag">03. Resources</div>
+            <h3>Asset Management</h3>
+            <div class="upload-area">
+                <input type="file" id="fileInput" hidden>
+                <button class="modern-btn circle" id="uploadBtn">+</button>
+                <p id="fileStatus">Upload Resource</p>
             </div>
         </section>
 
-        <section id="games">
-            <div class="section-label">04. Mini Game</div>
-            <div class="content">
-                <p><strong>Reflex Check:</strong> Click the burgundy target to begin.</p>
-                <p>Score: <span id="score">0</span></p>
-                <button class="btn" id="startBtn">Initiate System</button>
-                <div id="game-area">
+        <section id="games" class="bento-item">
+            <div class="tag">04. Source Games</div>
+            <h3>Reflex_Test.exe</h3>
+            <div class="game-wrapper">
+                <div id="score">SCORE: 00</div>
+                <div id="game-canvas">
                     <div id="target"></div>
                 </div>
+                <button class="modern-btn" id="startBtn">START SYSTEM</button>
             </div>
         </section>
     </main>
 
     <footer>
-        <p>Built with Burgundy & Grey &mdash; 2026 Portfolio Edition</p>
+        <p>&copy; 2026 Donghyun Lim &bull; Editorial Minimalist Edition</p>
     </footer>
 
     <script src="script.js"></script>
