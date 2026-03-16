@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     
-    // --- FILE UPLOAD LOGIC ---
+    // 1. DONGHYUN'S UPLOAD LOGIC
     const fileInput = document.getElementById('fileInput');
     const uploadBtn = document.getElementById('uploadBtn');
     const fileStatus = document.getElementById('fileStatus');
@@ -9,55 +9,51 @@ document.addEventListener('DOMContentLoaded', () => {
 
     fileInput.addEventListener('change', () => {
         if (fileInput.files.length > 0) {
-            fileStatus.innerText = `Preparing to process: ${fileInput.files[0].name}`;
+            fileStatus.innerHTML = `Linked Asset:<br><strong>${fileInput.files[0].name}</strong>`;
+            fileStatus.style.color = "var(--burgundy)";
         }
     });
 
-    // --- REFLEX GAME LOGIC ---
+    // 2. REFLEX GAME LOGIC
     let score = 0;
     let isActive = false;
     const target = document.getElementById('target');
-    const gameArea = document.getElementById('game-area');
+    const canvas = document.getElementById('game-canvas');
     const scoreDisplay = document.getElementById('score');
     const startBtn = document.getElementById('startBtn');
 
-    function moveTarget() {
+    function spawnTarget() {
         if (!isActive) return;
-
-        const maxX = gameArea.clientWidth - 50;
-        const maxY = gameArea.clientHeight - 50;
-        
-        const randomX = Math.floor(Math.random() * maxX);
-        const randomY = Math.floor(Math.random() * maxY);
-        
-        target.style.left = `${randomX}px`;
-        target.style.top = `${randomY}px`;
+        const x = Math.random() * (canvas.clientWidth - 40);
+        const y = Math.random() * (canvas.clientHeight - 40);
+        target.style.left = `${x}px`;
+        target.style.top = `${y}px`;
         target.style.display = 'block';
     }
 
     startBtn.addEventListener('click', () => {
         score = 0;
         isActive = true;
-        scoreDisplay.innerText = score;
-        startBtn.innerText = "System Active";
-        moveTarget();
+        scoreDisplay.innerText = "SCORE: 00";
+        startBtn.innerText = "SYSTEM ACTIVE";
+        spawnTarget();
     });
 
     target.addEventListener('mousedown', (e) => {
-        e.stopPropagation(); // Prevents clicking the gameArea (Game Over)
+        e.stopPropagation();
         if (isActive) {
             score++;
-            scoreDisplay.innerText = score;
-            moveTarget();
+            scoreDisplay.innerText = `SCORE: ${score < 10 ? '0' + score : score}`;
+            spawnTarget();
         }
     });
 
-    gameArea.addEventListener('mousedown', () => {
+    canvas.addEventListener('mousedown', () => {
         if (isActive) {
-            alert(`Link Terminated. Final Score: ${score}`);
             isActive = false;
             target.style.display = 'none';
-            startBtn.innerText = "Restart System";
+            startBtn.innerText = "RE-INITIALIZE";
+            alert(`Link Broken. Data points collected: ${score}`);
         }
     });
 });
