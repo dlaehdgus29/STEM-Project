@@ -1,39 +1,63 @@
-// File Upload Logic
-const fileInput = document.getElementById('fileUpload');
-const fileNameDisplay = document.getElementById('file-name');
-
-fileInput.addEventListener('change', function() {
-    if (this.files.length > 0) {
-        fileNameDisplay.textContent = `Selected: ${this.files[0].name}`;
-    } else {
-        fileNameDisplay.textContent = "No file chosen";
-    }
-});
-
-function handleUpload() {
-    if (fileInput.files.length > 0) {
-        alert("Resource '" + fileInput.files[0].name + "' has been triggered for upload!");
-    } else {
-        alert("Please select a file first.");
-    }
-}
-
-// Simple Mini Game Logic (Clicker)
-let score = 0;
-const scoreDisplay = document.getElementById('game-score');
-
-function playGame() {
-    score++;
-    scoreDisplay.textContent = `Score: ${score}`;
+document.addEventListener('DOMContentLoaded', () => {
     
-    // Add a little visual flair on click
-    scoreDisplay.style.color = "#800020";
-    setTimeout(() => {
-        scoreDisplay.style.color = "#333";
-    }, 100);
-}
+    // --- FILE UPLOAD LOGIC ---
+    const fileInput = document.getElementById('fileInput');
+    const uploadBtn = document.getElementById('uploadBtn');
+    const fileStatus = document.getElementById('fileStatus');
 
-function resetGame() {
-    score = 0;
-    scoreDisplay.textContent = `Score: ${score}`;
-}
+    uploadBtn.addEventListener('click', () => fileInput.click());
+
+    fileInput.addEventListener('change', () => {
+        if (fileInput.files.length > 0) {
+            fileStatus.innerText = `Preparing to process: ${fileInput.files[0].name}`;
+        }
+    });
+
+    // --- REFLEX GAME LOGIC ---
+    let score = 0;
+    let isActive = false;
+    const target = document.getElementById('target');
+    const gameArea = document.getElementById('game-area');
+    const scoreDisplay = document.getElementById('score');
+    const startBtn = document.getElementById('startBtn');
+
+    function moveTarget() {
+        if (!isActive) return;
+
+        const maxX = gameArea.clientWidth - 50;
+        const maxY = gameArea.clientHeight - 50;
+        
+        const randomX = Math.floor(Math.random() * maxX);
+        const randomY = Math.floor(Math.random() * maxY);
+        
+        target.style.left = `${randomX}px`;
+        target.style.top = `${randomY}px`;
+        target.style.display = 'block';
+    }
+
+    startBtn.addEventListener('click', () => {
+        score = 0;
+        isActive = true;
+        scoreDisplay.innerText = score;
+        startBtn.innerText = "System Active";
+        moveTarget();
+    });
+
+    target.addEventListener('mousedown', (e) => {
+        e.stopPropagation(); // Prevents clicking the gameArea (Game Over)
+        if (isActive) {
+            score++;
+            scoreDisplay.innerText = score;
+            moveTarget();
+        }
+    });
+
+    gameArea.addEventListener('mousedown', () => {
+        if (isActive) {
+            alert(`Link Terminated. Final Score: ${score}`);
+            isActive = false;
+            target.style.display = 'none';
+            startBtn.innerText = "Restart System";
+        }
+    });
+});
