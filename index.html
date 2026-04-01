@@ -3,85 +3,498 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Donghyun Lim | Web Architect</title>
-    <link rel="stylesheet" href="style.css">
+    <title>SafeBite AI | The Global Sanctuary</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;1,600&family=Montserrat:wght@300;500;700&family=Playfair+Display:ital,wght@0,900;1,900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --emerald-deep: #064e3b;
+            --moss-green: #375534;
+            --gold-leaf: #d4af37;
+            --soft-ivory: #f9fbf7;
+            --danger-red: #991b1b;
+            --warning-amber: #b45309;
+            --glass: rgba(255, 255, 255, 0.9);
+            --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: var(--soft-ivory);
+            color: var(--moss-green);
+            overflow-x: hidden;
+            background-image: url('https://www.transparenttextures.com/patterns/natural-paper.png');
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+        /* --- NAVIGATION --- */
+        nav {
+            background: var(--glass);
+            backdrop-filter: blur(15px);
+            padding: 20px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(56, 142, 60, 0.1);
+        }
+
+        .logo { 
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: var(--emerald-deep);
+            text-decoration: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--moss-green);
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-left: 20px;
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            height: 70vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
+                        url('https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-attachment: fixed;
+            clip-path: ellipse(150% 100% at 50% 0%);
+            text-align: center;
+            color: white;
+        }
+
+        .hero-content h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 7vw, 5rem);
+            font-style: italic;
+            margin-bottom: 10px;
+        }
+
+        /* --- APP CONTAINER --- */
+        .app-section { margin-top: -120px; padding-bottom: 60px; padding-inline: 5%; }
+
+        .app-container {
+            background: var(--glass);
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 50px;
+            border-radius: 40px;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.1);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255,255,255,0.5);
+            position: relative;
+        }
+
+        .grid-inputs {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        label {
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+            display: block;
+            color: var(--emerald-deep);
+        }
+
+        select {
+            width: 100%;
+            padding: 18px;
+            border: 1px solid #d1d5db;
+            border-radius: 12px;
+            background: white;
+            font-family: inherit;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .btn-main {
+            background: var(--emerald-deep);
+            color: white;
+            padding: 20px;
+            border-radius: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+            width: 100%;
+        }
+
+        .btn-main:hover {
+            background: var(--moss-green);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(6, 78, 59, 0.2);
+        }
+
+        /* --- SECTION BOXES (VIDEO & STORY) --- */
+        .content-box {
+            max-width: 900px;
+            margin: 0 auto 60px;
+            padding: 60px;
+            background: white;
+            border-radius: 40px;
+            border: 1px solid rgba(0,0,0,0.05);
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.02);
+        }
+
+        .section-header {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            color: var(--emerald-deep);
+            margin-bottom: 20px;
+        }
+
+        .story-text {
+            font-size: 1.1rem;
+            color: var(--moss-green);
+            max-width: 700px;
+            margin: 0 auto;
+            opacity: 0.8;
+        }
+
+        /* --- VIDEO STYLING --- */
+        .video-wrapper {
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            background: #000;
+            line-height: 0;
+        }
+
+        video {
+            width: 100%;
+            display: block;
+        }
+
+        /* --- RESULT STYLES --- */
+        #result-card {
+            margin-top: 35px;
+            padding: 30px;
+            border-radius: 20px;
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        .toxic { background: #fff1f2; border-left: 8px solid var(--danger-red); color: #7f1d1d; }
+        .safe { background: #f0fdf4; border-left: 8px solid #16a34a; color: #14532d; }
+        .warning { background: #fffbeb; border-left: 8px solid var(--warning-amber); color: #78350f; }
+
+        footer {
+            background: var(--emerald-deep);
+            color: #ecfdf5;
+            padding: 60px 5%;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .grid-inputs { grid-template-columns: 1fr; }
+            .app-container, .content-box { padding: 30px; margin-inline: 15px; }
+        }
+    </style>
 </head>
 <body>
 
-    <nav class="glass-nav">
-        <div class="nav-logo">D. Lim</div>
-        <ul class="nav-links">
-            <li><a href="#about">Identity</a></li>
-            <li><a href="#career">Path</a></li>
-            <li><a href="#resources">Assets</a></li>
-            <li><a href="#games">Interact</a></li>
-        </ul>
+    <nav>
+        <a href="#" class="logo">SAFEBITE AI</a>
+        <div class="nav-links">
+            <a href="#ai-tool">Analyzer</a>
+            <a href="#intro-video">Video</a>
+            <a href="#our-story">Our Story</a>
+        </div>
     </nav>
 
-    <header class="hero">
+    <section class="hero">
         <div class="hero-content">
-            <h1 class="fade-in">Donghyun <span class="italic">Lim</span></h1>
-            <p class="hero-sub">Full Stack Developer & Digital Architect</p>
+            <h1>Nature's Wisdom.</h1>
+            <p>A sacred guide for the creatures we cherish.</p>
         </div>
-        <div class="hero-images">
-            <div class="img-card"><img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=500&q=80" alt="Dev Work"></div>
-            <div class="img-card center"><img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=500&q=80" alt="Code Snippet"></div>
-            <div class="img-card"><img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=500&q=80" alt="Setup"></div>
+    </section>
+
+    <section id="ai-tool" class="app-section">
+        <div class="app-container">
+            <div class="grid-inputs">
+                <div class="input-group">
+                    <label>Select Creature</label>
+                    <select id="species">
+                        <option value="dog">Canine (Dog) 🐕</option>
+                        <option value="cat">Feline (Cat) 🐈</option>
+                        <option value="rabbit">Lagomorph (Rabbit) 🐇</option>
+                        <option value="bird">Avian (Bird) 🐦</option>
+                        <option value="hamster">Rodent (Hamster) 🐹</option>
+                        <option value="horse">Equine (Horse) 🐎</option>
+                        <option value="reptile">Reptilian (Bearded Dragon) 🦎</option>
+                        <option value="guinea_pig">Cavy (Guinea Pig) 🐹</option>
+                    </select>
+                </div>
+
+                <div class="input-group">
+                    <label>Select Substance</label>
+                    <select id="food-select">
+                        <option value="">-- Choose a Food --</option>
+                        <optgroup label="Fruits & Vegetables">
+                            <option value="apple">Apples</option>
+                            <option value="avocado">Avocado</option>
+                            <option value="blueberries">Blueberries</option>
+                            <option value="grapes">Grapes & Raisins</option>
+                            <option value="onion">Onions & Garlic</option>
+                            <option value="spinach">Spinach</option>
+                            <option value="watermelon">Watermelon</option>
+                        </optgroup>
+                        <optgroup label="Treats & Pantry">
+                            <option value="chocolate">Chocolate</option>
+                            <option value="coffee">Coffee / Caffeine</option>
+                            <option value="macadamia">Macadamia Nuts</option>
+                            <option value="xylitol">Xylitol (Sugar-Free)</option>
+                            <option value="bread_diet">Bread / Yeast Dough</option>
+                        </optgroup>
+                        <optgroup label="Plants">
+                            <option value="lilies">Lilies</option>
+                            <option value="aloe">Aloe Vera</option>
+                            <option value="tulips">Tulips</option>
+                        </optgroup>
+                    </select>
+                </div>
+            </div>
+
+            <button class="btn-main" onclick="checkFoodSafety()">Analyze Safety</button>
+
+            <div id="result-card">
+                <h2 id="result-title" style="font-family: 'Playfair Display'; margin-bottom: 10px;"></h2>
+                <p id="result-desc"></p>
+            </div>
         </div>
-    </header>
+    </section>
 
-    <main class="bento-grid">
-        <section id="about" class="bento-item tall burgundy-tint">
-            <div class="tag">01. About Me</div>
-            <h2>Philosophy</h2>
-            <p>I am Donghyun Lim. To me, web development isn't just about syntax; it's about structural integrity. I build applications that are as stable as they are visually striking. Since we've collaborated before, you know I prioritize clean execution and high-contrast, minimalist aesthetics.</p>
-        </section>
+    <section id="intro-video" class="content-box">
+        <h2 class="section-header">Experience SafeBite</h2>
+        <div class="video-wrapper">
+            <video controls>
+                <source src="a_A_cinematic_high-fid.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    </section>
 
-        <section id="career" class="bento-item wide">
-            <div class="tag">02. Career</div>
-            <div class="career-list">
-                <div class="job">
-                    <h3>Lead Web App Developer</h3>
-                    <span>2024 — PRESENT</span>
-                </div>
-                <div class="job">
-                    <h3>Frontend Systems Architect</h3>
-                    <span>2021 — 2024</span>
-                </div>
-                <div class="job">
-                    <h3>UI/UX Engineer</h3>
-                    <span>2019 — 2021</span>
-                </div>
-            </div>
-        </section>
-
-        <section id="resources" class="bento-item">
-            <div class="tag">03. Resources</div>
-            <h3>Asset Management</h3>
-            <div class="upload-area">
-                <input type="file" id="fileInput" hidden>
-                <button class="modern-btn circle" id="uploadBtn">+</button>
-                <p id="fileStatus">Upload Resource</p>
-            </div>
-        </section>
-
-        <section id="games" class="bento-item">
-            <div class="tag">04. Source Games</div>
-            <h3>Reflex_Test.exe</h3>
-            <div class="game-wrapper">
-                <div id="score">SCORE: 00</div>
-                <div id="game-canvas">
-                    <div id="target"></div>
-                </div>
-                <button class="modern-btn" id="startBtn">START SYSTEM</button>
-            </div>
-        </section>
-    </main>
+    <section id="our-story" class="content-box">
+        <h2 class="section-header">Behind the Sanctuary</h2>
+        <p class="story-text">
+            SafeBite AI is a project created by <strong>Sion and Daniel</strong>, Grade 9 students at <strong>Forest City International School (FCIS)</strong>. 
+            <br><br>
+            What began as an assignment assigned by our teacher has evolved into a passion project for animal welfare. We built this tool to simplify the complex world of pet safety, ensuring that owners everywhere have instant access to nature's wisdom and scientific safety data.
+        </p>
+    </section>
 
     <footer>
-        <p>&copy; 2026 Donghyun Lim &bull; Editorial Minimalist Edition</p>
+        <p>© 2026 SafeBite AI | Created by Sion & Daniel (FCIS Grade 9)</p>
+        <p style="opacity: 0.6; margin-top: 10px; font-size: 0.7rem;">Educational tool only. Always consult a veterinarian for clinical advice.</p>
     </footer>
 
-    <script src="script.js"></script>
+    <script>
+        const foodDatabase = {
+            "apple": {
+                dog: { status: "safe", message: "SAFE: Great fiber source. Remove all seeds as they contain cyanide." },
+                cat: { status: "safe", message: "SAFE: Non-toxic, but cats usually lack interest in sweet fruit." },
+                rabbit: { status: "warning", message: "CAUTION: Treat only. High sugar can upset delicate cecal balance." },
+                bird: { status: "safe", message: "SAFE: Remove seeds! Cyanide in seeds is lethal to small birds." },
+                hamster: { status: "safe", message: "SAFE: Small pieces only. Remove seeds and core." },
+                horse: { status: "safe", message: "EXCELLENT: A favorite. Slice to prevent choking." },
+                reptile: { status: "safe", message: "SAFE: A good treat for omnivores like Bearded Dragons." },
+                guinea_pig: { status: "safe", message: "SAFE: High Vitamin C, but feed in moderation." }
+            },
+            "avocado": {
+                dog: { status: "warning", message: "CAUTION: Flesh is okay, but the pit is a major choking/blockage hazard." },
+                cat: { status: "warning", message: "CAUTION: May cause mild GI upset. Not recommended." },
+                rabbit: { status: "toxic", message: "FATAL: Contains Persin. Causes heart failure and respiratory distress." },
+                bird: { status: "toxic", message: "FATAL: Extremely toxic. Causes sudden cardiac death." },
+                hamster: { status: "toxic", message: "DANGER: High fat and Persin content are dangerous." },
+                horse: { status: "toxic", message: "DANGER: Causes severe swelling of the head and chest." },
+                reptile: { status: "toxic", message: "DANGER: Persin is toxic to many reptiles." },
+                guinea_pig: { status: "toxic", message: "FATAL: Persin is highly toxic to guinea pigs." }
+            },
+            "blueberries": {
+                dog: { status: "safe", message: "EXCELLENT: Low calorie and high in antioxidants." },
+                cat: { status: "safe", message: "SAFE: Non-toxic. Some cats enjoy the texture." },
+                rabbit: { status: "warning", message: "CAUTION: High sugar. Limit to 2-3 berries." },
+                bird: { status: "safe", message: "EXCELLENT: Wild birds and pets love these." },
+                hamster: { status: "safe", message: "SAFE: A beloved treat. Feed one at a time." },
+                horse: { status: "safe", message: "SAFE: A healthy, sweet reward in moderation." },
+                reptile: { status: "safe", message: "SAFE: Great for nutrition in omnivorous reptiles." },
+                guinea_pig: { status: "safe", message: "EXCELLENT: High in Vitamin C. Feed 1-2 berries." }
+            },
+            "grapes": {
+                dog: { status: "toxic", message: "CRITICAL: Highly toxic. Can cause acute kidney failure." },
+                cat: { status: "toxic", message: "DANGER: Toxic to kidneys. Seek vet care if ingested." },
+                rabbit: { status: "warning", message: "CAUTION: High sugar. risks GI stasis if overfed." },
+                bird: { status: "safe", message: "SAFE: Remove seeds. Wash thoroughly to remove pesticides." },
+                hamster: { status: "warning", message: "CAUTION: Very sugary. Small pieces only." },
+                horse: { status: "safe", message: "SAFE: A refreshing treat in moderation." },
+                reptile: { status: "warning", message: "CAUTION: High phosphorus can interfere with calcium." },
+                guinea_pig: { status: "warning", message: "CAUTION: Too much sugar can cause obesity." }
+            },
+            "onion": {
+                dog: { status: "toxic", message: "CRITICAL: Destroys red blood cells. Causes anemia." },
+                cat: { status: "toxic", message: "FATAL: Cats are highly sensitive. Causes Heinz Body Anemia." },
+                rabbit: { status: "toxic", message: "DANGER: Causes blood disorders and immunosuppression." },
+                bird: { status: "toxic", message: "DANGER: Causes GI upset and hemolytic anemia." },
+                hamster: { status: "toxic", message: "DANGER: Can cause blood disorders." },
+                horse: { status: "toxic", message: "DANGER: Causes anemia. Avoid wild onions in pastures." },
+                reptile: { status: "toxic", message: "DANGER: Highly irritating to the digestive tract." },
+                guinea_pig: { status: "toxic", message: "FATAL: Can cause rapid blood cell destruction." }
+            },
+            "spinach": {
+                dog: { status: "safe", message: "SAFE: Healthy in small amounts. Large amounts affect calcium." },
+                cat: { status: "warning", message: "CAUTION: Contains oxalates which can contribute to kidney stones." },
+                rabbit: { status: "warning", message: "CAUTION: High oxalates. Feed sparingly to avoid stones." },
+                bird: { status: "safe", message: "SAFE: Nutritious, but limit to avoid interfering with calcium." },
+                hamster: { status: "safe", message: "SAFE: Small amounts are great for vitamins." },
+                horse: { status: "safe", message: "SAFE: Non-toxic, but most horses aren't interested." },
+                reptile: { status: "warning", message: "CAUTION: Calcium binder. Should not be a staple." },
+                guinea_pig: { status: "warning", message: "CAUTION: High calcium/oxalates can lead to bladder stones." }
+            },
+            "watermelon": {
+                dog: { status: "safe", message: "SAFE: Great for hydration. Remove seeds and the tough rind." },
+                cat: { status: "safe", message: "SAFE: Non-toxic. Some cats like the moisture." },
+                rabbit: { status: "warning", message: "CAUTION: Very high water/sugar. Feed flesh only in tiny amounts." },
+                bird: { status: "safe", message: "SAFE: Excellent summer treat. Remove seeds." },
+                hamster: { status: "warning", message: "CAUTION: High water can cause diarrhea." },
+                horse: { status: "safe", message: "SAFE: The rind is also safe for horses if cut into small pieces." },
+                reptile: { status: "safe", message: "SAFE: Good for hydration. Feed as a treat only." },
+                guinea_pig: { status: "warning", message: "CAUTION: High sugar. Limit to a small cube once a week." }
+            },
+            "chocolate": {
+                dog: { status: "toxic", message: "CRITICAL: Contains theobromine. Causes seizures and heart failure." },
+                cat: { status: "toxic", message: "FATAL: Very toxic. Symptoms include tremors and rapid heart rate." },
+                rabbit: { status: "toxic", message: "FATAL: Rabbits cannot metabolize chocolate." },
+                bird: { status: "toxic", message: "FATAL: Affects the nervous system and heart immediately." },
+                hamster: { status: "toxic", message: "FATAL: Their small size makes even a crumb dangerous." },
+                horse: { status: "toxic", message: "DANGER: Can cause colic, tremors, and metabolic distress." },
+                reptile: { status: "toxic", message: "DANGER: Never feed processed human sweets to reptiles." },
+                guinea_pig: { status: "toxic", message: "FATAL: Causes severe heart and nervous system distress." }
+            },
+            "coffee": {
+                dog: { status: "toxic", message: "CRITICAL: Caffeine causes heart arrhythmias and hyperthermia." },
+                cat: { status: "toxic", message: "FATAL: Very sensitive to caffeine. Beans and grounds are deadly." },
+                rabbit: { status: "toxic", message: "FATAL: Causes cardiac arrest in lagomorphs." },
+                bird: { status: "toxic", message: "FATAL: Even a sip can cause rapid heart rate and death." },
+                hamster: { status: "toxic", message: "FATAL: Heart stimulant that is too strong for rodents." },
+                horse: { status: "toxic", message: "DANGER: Causes restlessness and heart palpitations." },
+                reptile: { status: "toxic", message: "DANGER: Caffeine is lethal to reptiles." },
+                guinea_pig: { status: "toxic", message: "FATAL: Immediate heart and nervous system failure." }
+            },
+            "macadamia": {
+                dog: { status: "toxic", message: "CRITICAL: Causes hind-end weakness, vomiting, and tremors." },
+                cat: { status: "warning", message: "CAUTION: Not specifically toxic, but high fat risks pancreatitis." },
+                rabbit: { status: "toxic", message: "DANGER: High fat content is fatal for a rabbit's digestion." },
+                bird: { status: "safe", message: "SAFE: Large parrots can have them, but they are very fattening." },
+                hamster: { status: "warning", message: "CAUTION: Too fatty. Can lead to obesity." },
+                horse: { status: "warning", message: "CAUTION: Nuts are a choking hazard and too high in fat." },
+                reptile: { status: "warning", message: "CAUTION: Too high in fat for most captive reptiles." },
+                guinea_pig: { status: "toxic", message: "DANGER: Can cause severe digestive blockage." }
+            },
+            "xylitol": {
+                dog: { status: "toxic", message: "CRITICAL: Lethal. Causes a massive insulin spike and liver failure." },
+                cat: { status: "toxic", message: "DANGER: Highly toxic. Check labels on peanut butter." },
+                rabbit: { status: "toxic", message: "FATAL: Causes extreme hypoglycemia (low blood sugar)." },
+                bird: { status: "toxic", message: "FATAL: Causes liver failure and sudden death." },
+                hamster: { status: "toxic", message: "FATAL: Rapidly drops blood sugar to dangerous levels." },
+                horse: { status: "toxic", message: "DANGER: Can cause weakness and liver distress." },
+                reptile: { status: "toxic", message: "DANGER: Never feed artificial sweeteners to reptiles." },
+                guinea_pig: { status: "toxic", message: "FATAL: Lethal drop in blood sugar and liver damage." }
+            },
+            "bread_diet": {
+                dog: { status: "warning", message: "CAUTION: Plain bread is okay, but raw dough expands in the stomach." },
+                cat: { status: "warning", message: "CAUTION: No nutritional value. Avoid yeast dough (toxic ethanol)." },
+                rabbit: { status: "toxic", message: "DANGER: High starch/sugar causes deadly bacterial bloom." },
+                bird: { status: "warning", message: "CAUTION: 'Angel Wing' deformity can occur from too much bread." },
+                hamster: { status: "warning", message: "CAUTION: Can get stuck in cheek pouches. No nutrition." },
+                horse: { status: "warning", message: "CAUTION: Can cause fermentation in the gut and lead to colic." },
+                reptile: { status: "toxic", message: "DANGER: Reptiles cannot process grains or yeast." },
+                guinea_pig: { status: "toxic", message: "DANGER: Can lead to severe bloat and GI stasis." }
+            },
+            "lilies": {
+                dog: { status: "warning", message: "CAUTION: Causes severe mouth irritation and drooling." },
+                cat: { status: "toxic", message: "FATAL: True lilies cause total kidney failure. Even pollen is deadly." },
+                rabbit: { status: "toxic", message: "DANGER: Causes heart and kidney issues if ingested." },
+                bird: { status: "toxic", message: "DANGER: Most varieties are toxic to birds if nibbled." },
+                hamster: { status: "toxic", message: "DANGER: Highly toxic if used as bedding or food." },
+                horse: { status: "toxic", message: "DANGER: Many varieties are toxic to grazing horses." },
+                reptile: { status: "toxic", message: "DANGER: Many lilies contain oxalates that harm reptiles." },
+                guinea_pig: { status: "toxic", message: "FATAL: Causes rapid internal organ damage." }
+            },
+            "aloe": {
+                dog: { status: "warning", message: "CAUTION: The gel is okay, but the rind causes vomiting." },
+                cat: { status: "warning", message: "CAUTION: Causes GI upset and tremors if chewed." },
+                rabbit: { status: "toxic", message: "DANGER: Causes severe diarrhea and dehydration." },
+                bird: { status: "safe", message: "SAFE: Pure aloe gel is often used to soothe bird skin." },
+                hamster: { status: "warning", message: "CAUTION: Can cause digestive distress." },
+                horse: { status: "warning", message: "CAUTION: Large amounts cause laxative effects." },
+                reptile: { status: "safe", message: "SAFE: Often used in bioactive enclosures, but limit intake." },
+                guinea_pig: { status: "warning", message: "CAUTION: May cause diarrhea and stomach pain." }
+            },
+            "tulips": {
+                dog: { status: "toxic", message: "DANGER: The bulb is the most toxic part. Causes heart issues." },
+                cat: { status: "toxic", message: "DANGER: Causes drooling, vomiting, and depression." },
+                rabbit: { status: "toxic", message: "FATAL: Highly toxic to rabbits. Keep out of gardens." },
+                bird: { status: "toxic", message: "DANGER: Causes GI distress and heart arrhythmias." },
+                hamster: { status: "toxic", message: "DANGER: Bulbs and petals are toxic." },
+                horse: { status: "toxic", message: "DANGER: Toxic if grazed. Causes mouth irritation." },
+                reptile: { status: "toxic", message: "DANGER: Never use tulip petals in reptile salads." },
+                guinea_pig: { status: "toxic", message: "FATAL: Causes severe poisoning and death." }
+            }
+        };
+
+        function checkFoodSafety() {
+            const species = document.getElementById("species").value;
+            const food = document.getElementById("food-select").value;
+            const resultCard = document.getElementById("result-card");
+            const resultTitle = document.getElementById("result-title");
+            const resultDesc = document.getElementById("result-desc");
+
+            if (!food) {
+                alert("Please select a substance to analyze.");
+                return;
+            }
+
+            resultCard.style.display = "block";
+            resultCard.className = ""; 
+
+            const data = foodDatabase[food][species];
+            
+            if (data) {
+                resultCard.classList.add(data.status);
+                resultTitle.innerText = data.status === "toxic" ? "🛑 DANGER" : (data.status === "warning" ? "⚠️ CAUTION" : "🌿 SAFE");
+                resultDesc.innerText = data.message;
+            } else {
+                resultCard.classList.add("warning");
+                resultTitle.innerText = "🔍 GUIDANCE";
+                resultDesc.innerText = "Data for this specific combination is rare. When in doubt, do not feed and consult a vet.";
+            }
+        }
+    </script>
 </body>
 </html>
