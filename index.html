@@ -61,9 +61,9 @@
             margin-left: 20px;
         }
 
-        /* --- HERO SECTION --- */
+        /* --- HERO --- */
         .hero {
-            height: 70vh;
+            height: 60vh;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -83,19 +83,18 @@
             margin-bottom: 10px;
         }
 
-        /* --- APP CONTAINER --- */
-        .app-section { margin-top: -120px; padding-bottom: 60px; padding-inline: 5%; }
+        /* --- ANALYZER SECTION --- */
+        .app-section { margin-top: -100px; padding-bottom: 60px; padding-inline: 5%; }
 
         .app-container {
             background: var(--glass);
-            max-width: 900px;
+            max-width: 1100px;
             margin: 0 auto;
             padding: 50px;
             border-radius: 40px;
             box-shadow: 0 30px 60px rgba(0,0,0,0.1);
             backdrop-filter: blur(20px);
             border: 1px solid rgba(255,255,255,0.5);
-            position: relative;
         }
 
         .grid-inputs {
@@ -121,10 +120,9 @@
             border: 1px solid #d1d5db;
             border-radius: 12px;
             background: white;
-            font-family: inherit;
             font-size: 1rem;
             cursor: pointer;
-            transition: var(--transition);
+            font-family: inherit;
         }
 
         .btn-main {
@@ -147,73 +145,59 @@
             box-shadow: 0 10px 20px rgba(6, 78, 59, 0.2);
         }
 
-        /* --- SECTION BOXES (VIDEO & STORY) --- */
+        /* --- RESULT CARD --- */
+        #result-card {
+            margin-top: 35px;
+            padding: 40px;
+            border-radius: 24px;
+            display: none;
+            text-align: left;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .result-meta { font-weight: 700; text-transform: uppercase; font-size: 0.8rem; margin-bottom: 5px; opacity: 0.8; }
+        .result-why { margin-top: 15px; padding-top: 20px; border-top: 1px solid rgba(0,0,0,0.1); font-size: 0.95rem; line-height: 1.7; color: #2d3748; }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        .toxic { background: #fff1f2; border: 2px solid var(--danger-red); color: #7f1d1d; }
+        .safe { background: #f0fdf4; border: 2px solid #16a34a; color: #14532d; }
+        .warning { background: #fffbeb; border: 2px solid var(--warning-amber); color: #78350f; }
+
+        /* --- CONTENT BOXES --- */
         .content-box {
-            max-width: 900px;
-            margin: 0 auto 60px;
+            max-width: 1100px;
+            margin: 60px auto;
             padding: 60px;
             background: white;
             border-radius: 40px;
             border: 1px solid rgba(0,0,0,0.05);
             text-align: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.02);
         }
 
-        .section-header {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.2rem;
-            color: var(--emerald-deep);
-            margin-bottom: 20px;
-        }
-
-        .story-text {
-            font-size: 1.1rem;
-            color: var(--moss-green);
-            max-width: 700px;
-            margin: 0 auto;
-            opacity: 0.8;
-        }
-
-        /* --- VIDEO STYLING --- */
         .video-wrapper {
             border-radius: 24px;
             overflow: hidden;
             box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-            background: #000;
-            line-height: 0;
+            background: #1a202c; 
+            padding: 10px;
         }
 
-        video {
-            width: 100%;
-            display: block;
+        video { 
+            width: 100%; 
+            display: block; 
+            border-radius: 16px;
         }
-
-        /* --- RESULT STYLES --- */
-        #result-card {
-            margin-top: 35px;
-            padding: 30px;
-            border-radius: 20px;
-            display: none;
-            animation: fadeIn 0.5s ease;
-        }
-
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-
-        .toxic { background: #fff1f2; border-left: 8px solid var(--danger-red); color: #7f1d1d; }
-        .safe { background: #f0fdf4; border-left: 8px solid #16a34a; color: #14532d; }
-        .warning { background: #fffbeb; border-left: 8px solid var(--warning-amber); color: #78350f; }
 
         footer {
             background: var(--emerald-deep);
             color: #ecfdf5;
             padding: 60px 5%;
             text-align: center;
-            font-size: 0.9rem;
         }
 
         @media (max-width: 768px) {
             .grid-inputs { grid-template-columns: 1fr; }
-            .app-container, .content-box { padding: 30px; margin-inline: 15px; }
         }
     </style>
 </head>
@@ -230,8 +214,8 @@
 
     <section class="hero">
         <div class="hero-content">
-            <h1>Nature's Wisdom.</h1>
-            <p>A sacred guide for the creatures we cherish.</p>
+            <h1>SafeBite AI</h1>
+            <p>Advanced toxicology and biological analysis for your home sanctuary.</p>
         </div>
     </section>
 
@@ -241,259 +225,218 @@
                 <div class="input-group">
                     <label>Select Creature</label>
                     <select id="species">
-                        <option value="dog">Canine (Dog) 🐕</option>
-                        <option value="cat">Feline (Cat) 🐈</option>
-                        <option value="rabbit">Lagomorph (Rabbit) 🐇</option>
-                        <option value="bird">Avian (Bird) 🐦</option>
-                        <option value="hamster">Rodent (Hamster) 🐹</option>
-                        <option value="horse">Equine (Horse) 🐎</option>
-                        <option value="reptile">Reptilian (Bearded Dragon) 🦎</option>
-                        <option value="guinea_pig">Cavy (Guinea Pig) 🐹</option>
+                        <option value="dog">Dog 🐕</option>
+                        <option value="cat">Cat 🐈</option>
+                        <option value="rabbit">Rabbit 🐇</option>
+                        <option value="bird">Parrot/Bird 🐦</option>
+                        <option value="hamster">Hamster 🐹</option>
+                        <option value="guinea_pig">Guinea Pig 🐹</option>
+                        <option value="rat">Pet Rat 🐀</option>
+                        <option value="hedgehog">Hedgehog 🦔</option>
+                        <option value="sugar_glider">Sugar Glider 🐿️</option>
+                        <option value="pig">Pot-bellied Pig 🐷</option>
+                        <option value="horse">Horse 🐎</option>
+                        <option value="reptile">Bearded Dragon 🦎</option>
+                        <option value="turtle">Turtle/Tortoise 🐢</option>
+                        <option value="ferret">Ferret 🦦</option>
+                        <option value="chinchilla">Chinchilla 🐭</option>
                     </select>
                 </div>
 
                 <div class="input-group">
                     <label>Select Substance</label>
                     <select id="food-select">
-                        <option value="">-- Choose a Food --</option>
-                        <optgroup label="Fruits & Vegetables">
+                        <option value="">-- Choose a Substance --</option>
+                        <optgroup label="Proteins & Meats">
+                            <option value="lean_beef">Lean Beef (Cooked)</option>
+                            <option value="chicken">Chicken Breast</option>
+                            <option value="pork_bacon">Pork & Bacon</option>
+                            <option value="raw_fish">Raw Fish (Salmon/Tuna)</option>
+                            <option value="liver">Organ Meat (Liver)</option>
+                            <option value="processed_meat">Processed (Salami/Hot Dogs)</option>
+                            <option value="cooked_bones">Cooked Bones</option>
+                        </optgroup>
+                        <optgroup label="Nature's Bounty">
                             <option value="apple">Apples</option>
                             <option value="avocado">Avocado</option>
+                            <option value="banana">Bananas</option>
                             <option value="blueberries">Blueberries</option>
+                            <option value="broccoli">Broccoli</option>
+                            <option value="carrot">Carrots</option>
+                            <option value="cherries">Cherries</option>
+                            <option value="citrus">Citrus (Lemon/Orange)</option>
                             <option value="grapes">Grapes & Raisins</option>
+                            <option value="mushroom">Mushrooms (Wild/Store)</option>
                             <option value="onion">Onions & Garlic</option>
                             <option value="spinach">Spinach</option>
-                            <option value="watermelon">Watermelon</option>
+                            <option value="nightshade">Tomato Stems/Potatoes</option>
                         </optgroup>
-                        <optgroup label="Treats & Pantry">
+                        <optgroup label="The Pantry">
+                            <option value="alcohol">Alcohol (Ethanol)</option>
+                            <option value="caffeine">Caffeine (Coffee/Tea)</option>
                             <option value="chocolate">Chocolate</option>
-                            <option value="coffee">Coffee / Caffeine</option>
-                            <option value="macadamia">Macadamia Nuts</option>
-                            <option value="xylitol">Xylitol (Sugar-Free)</option>
-                            <option value="bread_diet">Bread / Yeast Dough</option>
-                        </optgroup>
-                        <optgroup label="Plants">
-                            <option value="lilies">Lilies</option>
-                            <option value="aloe">Aloe Vera</option>
-                            <option value="tulips">Tulips</option>
+                            <option value="dairy">Dairy (Milk/Cheese)</option>
+                            <option value="xylitol">Xylitol (Sugar-Free Gum)</option>
                         </optgroup>
                     </select>
                 </div>
             </div>
 
-            <button class="btn-main" onclick="checkFoodSafety()">Analyze Safety</button>
+            <button class="btn-main" onclick="checkFoodSafety()">Analyze Diagnostic</button>
 
             <div id="result-card">
+                <div class="result-meta" id="result-status-text"></div>
                 <h2 id="result-title" style="font-family: 'Playfair Display'; margin-bottom: 10px;"></h2>
-                <p id="result-desc"></p>
+                <p id="result-desc" style="font-weight: 500;"></p>
+                <div class="result-why" id="result-why"></div>
             </div>
         </div>
     </section>
 
     <section id="intro-video" class="content-box">
-        <h2 class="section-header">Experience SafeBite</h2>
+        <h2 style="margin-bottom:20px; font-family: 'Playfair Display';">AI Video</h2>
         <div class="video-wrapper">
-            <video controls>
-                <source src="a_A_cinematic_high-fid.mp4" type="video/mp4">
-                Your browser does not support the video tag.
+            <video controls width="100%">
+                <source src="8_second_video.mp4" type="video/mp4">
+                <p style="color: white; padding: 20px;">Your browser does not support the video tag, or the file <strong>8_second_video.mp4</strong> is not in the same folder as this HTML file.</p>
             </video>
         </div>
     </section>
 
     <section id="our-story" class="content-box">
-        <h2 class="section-header">Behind the Sanctuary</h2>
-        <p class="story-text">
-            SafeBite AI is a project created by <strong>Sion and Daniel</strong>, Grade 9 students at <strong>Forest City International School (FCIS)</strong>. 
-            <br><br>
-            What began as an assignment assigned by our teacher has evolved into a passion project for animal welfare. We built this tool to simplify the complex world of pet safety, ensuring that owners everywhere have instant access to nature's wisdom and scientific safety data.
-        </p>
+        <h2 style="font-family: 'Playfair Display';">The SafeBite Project</h2>
+        <p>A collaborative biological study by <strong>Sion and Daniel</strong> at <strong>Forest City International School (FCIS)</strong>. Our goal is to use data-driven analysis to prevent accidental toxicology in domestic environments.</p>
     </section>
 
     <footer>
-        <p>© 2026 SafeBite AI | Created by Sion & Daniel (FCIS Grade 9)</p>
-        <p style="opacity: 0.6; margin-top: 10px; font-size: 0.7rem;">Educational tool only. Always consult a veterinarian for clinical advice.</p>
+        <p>© 2026 SafeBite AI | Sion & Daniel (Grade 9, FCIS)</p>
     </footer>
 
     <script>
         const foodDatabase = {
-            "apple": {
-                dog: { status: "safe", message: "SAFE: Great fiber source. Remove all seeds as they contain cyanide." },
-                cat: { status: "safe", message: "SAFE: Non-toxic, but cats usually lack interest in sweet fruit." },
-                rabbit: { status: "warning", message: "CAUTION: Treat only. High sugar can upset delicate cecal balance." },
-                bird: { status: "safe", message: "SAFE: Remove seeds! Cyanide in seeds is lethal to small birds." },
-                hamster: { status: "safe", message: "SAFE: Small pieces only. Remove seeds and core." },
-                horse: { status: "safe", message: "EXCELLENT: A favorite. Slice to prevent choking." },
-                reptile: { status: "safe", message: "SAFE: A good treat for omnivores like Bearded Dragons." },
-                guinea_pig: { status: "safe", message: "SAFE: High Vitamin C, but feed in moderation." }
+            // MEAT CATEGORY
+            "lean_beef": {
+                dog: { status: "safe", msg: "SAFE: High Bioavailability.", why: "Cooked lean beef provides essential Heme iron and complete amino acids. Ensure it is plain; salt or human seasoning triggers ion toxicosis and kidney strain." },
+                cat: { status: "safe", msg: "SAFE: Essential Taurine.", why: "As obligate carnivores, cats require the Taurine in beef for retinal health and cardiac muscle function. Lack of taurine leads to irreversible DCM (dilated cardiomyopathy)." },
+                rabbit: { status: "toxic", msg: "DANGER: Hindgut Failure.", why: "Rabbits are evolved for high-fiber forage. Animal protein destroys their cecal microflora, leading to fatal enterotoxemia and GI shutdown." },
+                ferret: { status: "safe", msg: "SAFE: Metabolic Match.", why: "Ferrets have a 3-4 hour GI transit time and zero ability to digest plants. Animal protein is their only viable energy source." },
+                all: { status: "safe", msg: "SAFE: Nutrient Dense.", why: "Safe for omnivores/carnivores if cooked and unseasoned. High iron supports red blood cell production." }
             },
-            "avocado": {
-                dog: { status: "warning", message: "CAUTION: Flesh is okay, but the pit is a major choking/blockage hazard." },
-                cat: { status: "warning", message: "CAUTION: May cause mild GI upset. Not recommended." },
-                rabbit: { status: "toxic", message: "FATAL: Contains Persin. Causes heart failure and respiratory distress." },
-                bird: { status: "toxic", message: "FATAL: Extremely toxic. Causes sudden cardiac death." },
-                hamster: { status: "toxic", message: "DANGER: High fat and Persin content are dangerous." },
-                horse: { status: "toxic", message: "DANGER: Causes severe swelling of the head and chest." },
-                reptile: { status: "toxic", message: "DANGER: Persin is toxic to many reptiles." },
-                guinea_pig: { status: "toxic", message: "FATAL: Persin is highly toxic to guinea pigs." }
+            "chicken": {
+                all: { status: "safe", msg: "SAFE: Lean Protein.", why: "Boiled, unseasoned chicken breast is the standard 'bland diet.' It is 98% digestible for most mammals and carries the lowest risk of gastric irritation." }
+            },
+            "pork_bacon": {
+                dog: { status: "warning", msg: "CAUTION: Pancreatitis Risk.", why: "The high lipid (fat) density in bacon triggers an overproduction of digestive enzymes, causing the pancreas to become inflamed and potentially 'self-digest.' This is a critical medical emergency." },
+                hedgehog: { status: "toxic", msg: "DANGER: Hepatic Lipidosis.", why: "Small insectivores cannot process the saturated fats in pork, leading to rapid fatty liver disease and metabolic collapse." },
+                all: { status: "warning", msg: "CAUTION: Hypernatremia.", why: "High salt levels in cured pork cause osmotic imbalance, leading to brain swelling (salt poisoning) in smaller pets." }
+            },
+            "raw_fish": {
+                cat: { status: "warning", msg: "CAUTION: Thiaminase Enzyme.", why: "Raw fish contains Thiaminase, which destroys Vitamin B1 (Thiamine). Deficiency leads to 'stargazing' (neurological circling) and seizures." },
+                dog: { status: "warning", msg: "CAUTION: SPD Pathogen.", why: "Raw freshwater fish can carry Neorickettsia bacteria, causing Salmon Poisoning Disease, which is 90% fatal in dogs if untreated." },
+                all: { status: "warning", msg: "CAUTION: Pathogen Risk.", why: "Salmonella and Listeria risks are high in raw seafood, impacting both animal and human handlers." }
+            },
+            "liver": {
+                dog: { status: "warning", msg: "CAUTION: Hypervitaminosis A.", why: "Liver contains toxic levels of Vitamin A if fed regularly. This fat-soluble vitamin causes painful bone spurs (spondylosis) along the spine." },
+                all: { status: "warning", msg: "CAUTION: Copper/A Toxicity.", why: "Organ meats are vital in tiny amounts (under 5%) but cause organ-shattering vitamin toxicity if used as a staple diet." }
+            },
+            "processed_meat": {
+                all: { status: "toxic", msg: "DANGER: Nitrates & Additives.", why: "Salami and Hot Dogs contain Nitrates that interfere with oxygen transport in the blood (Methemoglobinemia). They also often contain hidden garlic/onion powder toxins." }
+            },
+            "cooked_bones": {
+                all: { status: "toxic", msg: "DANGER: Internal Perforation.", why: "Cooking makes bones brittle and crystalline. They splinter into razor shards that can puncture the esophagus or stomach, requiring invasive surgery." }
+            },
+
+            // NATURE'S BOUNTY
+            "apple": {
+                dog: { status: "safe", msg: "SAFE: Fiber & Vitamin C.", why: "Flesh is safe, but seeds contain amygdalin, which releases cyanide. Ensure the fruit is cored and deseeded." },
+                ferret: { status: "toxic", msg: "DANGER: Insulinoma Risk.", why: "Ferrets cannot process complex sugars. Fructose causes pancreatic spikes that lead to fatal tumors (Insulinomas)." },
+                all: { status: "safe", msg: "SAFE: Low-Calorie Snack.", why: "Generally safe for omnivores in small amounts. Always remove seeds to prevent cyanide exposure." }
             },
             "blueberries": {
-                dog: { status: "safe", message: "EXCELLENT: Low calorie and high in antioxidants." },
-                cat: { status: "safe", message: "SAFE: Non-toxic. Some cats enjoy the texture." },
-                rabbit: { status: "warning", message: "CAUTION: High sugar. Limit to 2-3 berries." },
-                bird: { status: "safe", message: "EXCELLENT: Wild birds and pets love these." },
-                hamster: { status: "safe", message: "SAFE: A beloved treat. Feed one at a time." },
-                horse: { status: "safe", message: "SAFE: A healthy, sweet reward in moderation." },
-                reptile: { status: "safe", message: "SAFE: Great for nutrition in omnivorous reptiles." },
-                guinea_pig: { status: "safe", message: "EXCELLENT: High in Vitamin C. Feed 1-2 berries." }
+                dog: { status: "safe", msg: "SAFE: Anthocyanins.", why: "High in antioxidants that protect cells from oxidative stress. Low glycemic index makes them a safe fruit choice." },
+                all: { status: "safe", msg: "SAFE: Superfood.", why: "Rich in Vitamin K and Manganese, providing a healthy boost for birds and most omnivorous mammals." }
+            },
+            "banana": {
+                rabbit: { status: "warning", msg: "CAUTION: Cecal Bloom.", why: "High starch and sugar can cause a 'bad' bacterial bloom in the rabbit's gut, leading to painful and potentially fatal gas/bloat." },
+                all: { status: "safe", msg: "SAFE: Potassium Rich.", why: "Excellent source of magnesium and electrolytes, though high sugar requires strict portion control." }
+            },
+            "broccoli": {
+                horse: { status: "toxic", msg: "DANGER: Flatulent Colic.", why: "Cruciferous veggies produce massive gas in the horse's colon. Because horses cannot belch or vomit, this gas causes life-threatening colic." },
+                dog: { status: "warning", msg: "CAUTION: Isothiocyanates.", why: "Contains gastric irritants. If broccoli exceeds 10% of total diet, it can cause severe GI distress and thyroid interference." },
+                all: { status: "warning", msg: "CAUTION: GI Gas.", why: "Causes significant bloating and flatulence in most small mammals." }
+            },
+            "carrot": {
+                dog: { status: "safe", msg: "SAFE: Beta-Carotene.", why: "Excellent low-calorie treat high in fiber and beta-carotene (Vitamin A). Crunching raw carrots can also help remove plaque from teeth." },
+                rabbit: { status: "warning", msg: "CAUTION: High Sugar.", why: "Despite popular media, root vegetables are high in carbohydrates and sugars. Carrots should be a rare treat, not a staple, as excess sugar disrupts their specialized gut flora." },
+                horse: { status: "safe", msg: "SAFE: Traditional Forage.", why: "Highly palatable and provides excellent moisture and Vitamin A without overwhelming their digestive tract." },
+                all: { status: "safe", msg: "SAFE: Root Vegetable.", why: "Generally safe and nutritious. However, small herbivores should consume them sparingly due to the relatively high sugar content compared to leafy greens." }
+            },
+            "cherries": {
+                all: { status: "toxic", msg: "DANGER: Cyanogenic Glycosides.", why: "The pits and stems contain cyanide, which inhibits cytochrome c oxidase (cell oxygen use). Symptoms include dilated pupils and respiratory failure." }
+            },
+            "mushroom": {
+                all: { status: "warning", msg: "CAUTION: Mycotoxins.", why: "Store-bought are safe, but wild mushrooms can contain Amatoxins that cause irreversible liver and kidney destruction within 24 hours." }
+            },
+            "avocado": {
+                bird: { status: "toxic", msg: "FATAL: Persin Toxin.", why: "Persin causes heart muscle death (myocardial necrosis) in birds, leading to rapid respiratory failure and death." },
+                all: { status: "toxic", msg: "DANGER: Pulmonary Congestion.", why: "Highly toxic to rabbits and guinea pigs; causes fluid buildup around the heart and lungs." }
             },
             "grapes": {
-                dog: { status: "toxic", message: "CRITICAL: Highly toxic. Can cause acute kidney failure." },
-                cat: { status: "toxic", message: "DANGER: Toxic to kidneys. Seek vet care if ingested." },
-                rabbit: { status: "warning", message: "CAUTION: High sugar. risks GI stasis if overfed." },
-                bird: { status: "safe", message: "SAFE: Remove seeds. Wash thoroughly to remove pesticides." },
-                hamster: { status: "warning", message: "CAUTION: Very sugary. Small pieces only." },
-                horse: { status: "safe", message: "SAFE: A refreshing treat in moderation." },
-                reptile: { status: "warning", message: "CAUTION: High phosphorus can interfere with calcium." },
-                guinea_pig: { status: "warning", message: "CAUTION: Too much sugar can cause obesity." }
+                dog: { status: "toxic", msg: "CRITICAL: Tartaric Acid.", why: "Grapes cause sudden, acute renal (kidney) failure. The exact toxic mechanism was recently identified as tartaric acid poisoning." },
+                all: { status: "warning", msg: "CAUTION: Fermentation/Bloat.", why: "High sugar content leads to dangerous gas buildup in small hindgut fermenters." }
+            },
+            "citrus": {
+                rat: { status: "toxic", msg: "DANGER: Renal Cancer (Males).", why: "In male rats, d-limonene binds to alpha-2u-globulin protein, causing kidney damage and cancer. Females are unaffected." },
+                all: { status: "warning", msg: "CAUTION: Gastric Acid.", why: "The high citric acid content is corrosive to the stomach lining of most domestic animals." }
             },
             "onion": {
-                dog: { status: "toxic", message: "CRITICAL: Destroys red blood cells. Causes anemia." },
-                cat: { status: "toxic", message: "FATAL: Cats are highly sensitive. Causes Heinz Body Anemia." },
-                rabbit: { status: "toxic", message: "DANGER: Causes blood disorders and immunosuppression." },
-                bird: { status: "toxic", message: "DANGER: Causes GI upset and hemolytic anemia." },
-                hamster: { status: "toxic", message: "DANGER: Can cause blood disorders." },
-                horse: { status: "toxic", message: "DANGER: Causes anemia. Avoid wild onions in pastures." },
-                reptile: { status: "toxic", message: "DANGER: Highly irritating to the digestive tract." },
-                guinea_pig: { status: "toxic", message: "FATAL: Can cause rapid blood cell destruction." }
+                all: { status: "toxic", msg: "FATAL: Oxidative Damage.", why: "Contains N-propyl disulfide, which causes red blood cells to burst (Heinz Body Anemia), leading to oxygen deprivation." }
             },
             "spinach": {
-                dog: { status: "safe", message: "SAFE: Healthy in small amounts. Large amounts affect calcium." },
-                cat: { status: "warning", message: "CAUTION: Contains oxalates which can contribute to kidney stones." },
-                rabbit: { status: "warning", message: "CAUTION: High oxalates. Feed sparingly to avoid stones." },
-                bird: { status: "safe", message: "SAFE: Nutritious, but limit to avoid interfering with calcium." },
-                hamster: { status: "safe", message: "SAFE: Small amounts are great for vitamins." },
-                horse: { status: "safe", message: "SAFE: Non-toxic, but most horses aren't interested." },
-                reptile: { status: "warning", message: "CAUTION: Calcium binder. Should not be a staple." },
-                guinea_pig: { status: "warning", message: "CAUTION: High calcium/oxalates can lead to bladder stones." }
+                reptile: { status: "warning", msg: "CAUTION: Calcium Binder.", why: "Oxalates bind to calcium, preventing absorption. This is a primary driver of Metabolic Bone Disease (MBD) in lizards." },
+                all: { status: "warning", msg: "CAUTION: Bladder Stones.", why: "High oxalate levels contribute to urolithiasis (stones) in guinea pigs and rabbits." }
             },
-            "watermelon": {
-                dog: { status: "safe", message: "SAFE: Great for hydration. Remove seeds and the tough rind." },
-                cat: { status: "safe", message: "SAFE: Non-toxic. Some cats like the moisture." },
-                rabbit: { status: "warning", message: "CAUTION: Very high water/sugar. Feed flesh only in tiny amounts." },
-                bird: { status: "safe", message: "SAFE: Excellent summer treat. Remove seeds." },
-                hamster: { status: "warning", message: "CAUTION: High water can cause diarrhea." },
-                horse: { status: "safe", message: "SAFE: The rind is also safe for horses if cut into small pieces." },
-                reptile: { status: "safe", message: "SAFE: Good for hydration. Feed as a treat only." },
-                guinea_pig: { status: "warning", message: "CAUTION: High sugar. Limit to a small cube once a week." }
-            },
+
+            // PANTRY CATEGORY
             "chocolate": {
-                dog: { status: "toxic", message: "CRITICAL: Contains theobromine. Causes seizures and heart failure." },
-                cat: { status: "toxic", message: "FATAL: Very toxic. Symptoms include tremors and rapid heart rate." },
-                rabbit: { status: "toxic", message: "FATAL: Rabbits cannot metabolize chocolate." },
-                bird: { status: "toxic", message: "FATAL: Affects the nervous system and heart immediately." },
-                hamster: { status: "toxic", message: "FATAL: Their small size makes even a crumb dangerous." },
-                horse: { status: "toxic", message: "DANGER: Can cause colic, tremors, and metabolic distress." },
-                reptile: { status: "toxic", message: "DANGER: Never feed processed human sweets to reptiles." },
-                guinea_pig: { status: "toxic", message: "FATAL: Causes severe heart and nervous system distress." }
-            },
-            "coffee": {
-                dog: { status: "toxic", message: "CRITICAL: Caffeine causes heart arrhythmias and hyperthermia." },
-                cat: { status: "toxic", message: "FATAL: Very sensitive to caffeine. Beans and grounds are deadly." },
-                rabbit: { status: "toxic", message: "FATAL: Causes cardiac arrest in lagomorphs." },
-                bird: { status: "toxic", message: "FATAL: Even a sip can cause rapid heart rate and death." },
-                hamster: { status: "toxic", message: "FATAL: Heart stimulant that is too strong for rodents." },
-                horse: { status: "toxic", message: "DANGER: Causes restlessness and heart palpitations." },
-                reptile: { status: "toxic", message: "DANGER: Caffeine is lethal to reptiles." },
-                guinea_pig: { status: "toxic", message: "FATAL: Immediate heart and nervous system failure." }
-            },
-            "macadamia": {
-                dog: { status: "toxic", message: "CRITICAL: Causes hind-end weakness, vomiting, and tremors." },
-                cat: { status: "warning", message: "CAUTION: Not specifically toxic, but high fat risks pancreatitis." },
-                rabbit: { status: "toxic", message: "DANGER: High fat content is fatal for a rabbit's digestion." },
-                bird: { status: "safe", message: "SAFE: Large parrots can have them, but they are very fattening." },
-                hamster: { status: "warning", message: "CAUTION: Too fatty. Can lead to obesity." },
-                horse: { status: "warning", message: "CAUTION: Nuts are a choking hazard and too high in fat." },
-                reptile: { status: "warning", message: "CAUTION: Too high in fat for most captive reptiles." },
-                guinea_pig: { status: "toxic", message: "DANGER: Can cause severe digestive blockage." }
+                all: { status: "toxic", msg: "CRITICAL: Theobromine.", why: "Animals cannot metabolize theobromine. It builds up to toxic levels, causing heart arrhythmias, seizures, and death." }
             },
             "xylitol": {
-                dog: { status: "toxic", message: "CRITICAL: Lethal. Causes a massive insulin spike and liver failure." },
-                cat: { status: "toxic", message: "DANGER: Highly toxic. Check labels on peanut butter." },
-                rabbit: { status: "toxic", message: "FATAL: Causes extreme hypoglycemia (low blood sugar)." },
-                bird: { status: "toxic", message: "FATAL: Causes liver failure and sudden death." },
-                hamster: { status: "toxic", message: "FATAL: Rapidly drops blood sugar to dangerous levels." },
-                horse: { status: "toxic", message: "DANGER: Can cause weakness and liver distress." },
-                reptile: { status: "toxic", message: "DANGER: Never feed artificial sweeteners to reptiles." },
-                guinea_pig: { status: "toxic", message: "FATAL: Lethal drop in blood sugar and liver damage." }
+                dog: { status: "toxic", msg: "FATAL: Hypoglycemia.", why: "Triggers a massive insulin surge. Blood sugar crashes instantly, leading to seizures and total liver failure." },
+                all: { status: "toxic", msg: "DANGER: Hepatic Failure.", why: "Extremely toxic even in microscopic amounts to almost all non-human mammals." }
             },
-            "bread_diet": {
-                dog: { status: "warning", message: "CAUTION: Plain bread is okay, but raw dough expands in the stomach." },
-                cat: { status: "warning", message: "CAUTION: No nutritional value. Avoid yeast dough (toxic ethanol)." },
-                rabbit: { status: "toxic", message: "DANGER: High starch/sugar causes deadly bacterial bloom." },
-                bird: { status: "warning", message: "CAUTION: 'Angel Wing' deformity can occur from too much bread." },
-                hamster: { status: "warning", message: "CAUTION: Can get stuck in cheek pouches. No nutrition." },
-                horse: { status: "warning", message: "CAUTION: Can cause fermentation in the gut and lead to colic." },
-                reptile: { status: "toxic", message: "DANGER: Reptiles cannot process grains or yeast." },
-                guinea_pig: { status: "toxic", message: "DANGER: Can lead to severe bloat and GI stasis." }
+            "alcohol": {
+                all: { status: "toxic", msg: "FATAL: Ethanol Toxicity.", why: "Animals have tiny livers and high metabolic rates. Alcohol causes rapid central nervous system collapse." }
             },
-            "lilies": {
-                dog: { status: "warning", message: "CAUTION: Causes severe mouth irritation and drooling." },
-                cat: { status: "toxic", message: "FATAL: True lilies cause total kidney failure. Even pollen is deadly." },
-                rabbit: { status: "toxic", message: "DANGER: Causes heart and kidney issues if ingested." },
-                bird: { status: "toxic", message: "DANGER: Most varieties are toxic to birds if nibbled." },
-                hamster: { status: "toxic", message: "DANGER: Highly toxic if used as bedding or food." },
-                horse: { status: "toxic", message: "DANGER: Many varieties are toxic to grazing horses." },
-                reptile: { status: "toxic", message: "DANGER: Many lilies contain oxalates that harm reptiles." },
-                guinea_pig: { status: "toxic", message: "FATAL: Causes rapid internal organ damage." }
+            "caffeine": {
+                all: { status: "toxic", msg: "CRITICAL: Cardiac Stimulant.", why: "Methylxanthines cause the heart to race uncontrollably, leading to tremors and cardiac arrest." }
             },
-            "aloe": {
-                dog: { status: "warning", message: "CAUTION: The gel is okay, but the rind causes vomiting." },
-                cat: { status: "warning", message: "CAUTION: Causes GI upset and tremors if chewed." },
-                rabbit: { status: "toxic", message: "DANGER: Causes severe diarrhea and dehydration." },
-                bird: { status: "safe", message: "SAFE: Pure aloe gel is often used to soothe bird skin." },
-                hamster: { status: "warning", message: "CAUTION: Can cause digestive distress." },
-                horse: { status: "warning", message: "CAUTION: Large amounts cause laxative effects." },
-                reptile: { status: "safe", message: "SAFE: Often used in bioactive enclosures, but limit intake." },
-                guinea_pig: { status: "warning", message: "CAUTION: May cause diarrhea and stomach pain." }
-            },
-            "tulips": {
-                dog: { status: "toxic", message: "DANGER: The bulb is the most toxic part. Causes heart issues." },
-                cat: { status: "toxic", message: "DANGER: Causes drooling, vomiting, and depression." },
-                rabbit: { status: "toxic", message: "FATAL: Highly toxic to rabbits. Keep out of gardens." },
-                bird: { status: "toxic", message: "DANGER: Causes GI distress and heart arrhythmias." },
-                hamster: { status: "toxic", message: "DANGER: Bulbs and petals are toxic." },
-                horse: { status: "toxic", message: "DANGER: Toxic if grazed. Causes mouth irritation." },
-                reptile: { status: "toxic", message: "DANGER: Never use tulip petals in reptile salads." },
-                guinea_pig: { status: "toxic", message: "FATAL: Causes severe poisoning and death." }
+            "dairy": {
+                all: { status: "warning", msg: "CAUTION: Lactose Intolerance.", why: "Most adult mammals lack 'lactase.' Dairy causes osmotic diarrhea, drawing water into the gut and causing dehydration." }
             }
         };
 
         function checkFoodSafety() {
             const species = document.getElementById("species").value;
             const food = document.getElementById("food-select").value;
-            const resultCard = document.getElementById("result-card");
-            const resultTitle = document.getElementById("result-title");
-            const resultDesc = document.getElementById("result-desc");
-
+            const card = document.getElementById("result-card");
+            
             if (!food) {
-                alert("Please select a substance to analyze.");
+                alert("Please select a substance to begin the analysis.");
                 return;
             }
 
-            resultCard.style.display = "block";
-            resultCard.className = ""; 
-
-            const data = foodDatabase[food][species];
+            const data = foodDatabase[food][species] || foodDatabase[food]["all"];
             
-            if (data) {
-                resultCard.classList.add(data.status);
-                resultTitle.innerText = data.status === "toxic" ? "🛑 DANGER" : (data.status === "warning" ? "⚠️ CAUTION" : "🌿 SAFE");
-                resultDesc.innerText = data.message;
-            } else {
-                resultCard.classList.add("warning");
-                resultTitle.innerText = "🔍 GUIDANCE";
-                resultDesc.innerText = "Data for this specific combination is rare. When in doubt, do not feed and consult a vet.";
-            }
+            card.style.display = "block";
+            card.className = data.status;
+            
+            document.getElementById("result-status-text").innerText = data.status.toUpperCase();
+            document.getElementById("result-title").innerText = data.msg;
+            document.getElementById("result-desc").innerText = `Toxicological Analysis for: ${species.toUpperCase()}`;
+            document.getElementById("result-why").innerHTML = `<strong>Biological Explanation:</strong> ${data.why}`;
+            
+            card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         }
     </script>
 </body>
