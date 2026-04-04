@@ -274,6 +274,7 @@
                     <label>Select Substance</label>
                     <select id="food-select">
                         <option value="">-- Choose a Substance --</option>
+                        
                         <optgroup label="Proteins & Meats">
                             <option value="lean_beef">Lean Beef (Cooked)</option>
                             <option value="chicken">Chicken Breast</option>
@@ -283,7 +284,26 @@
                             <option value="processed_meat">Processed (Salami/Hot Dogs)</option>
                             <option value="cooked_bones">Cooked Bones</option>
                         </optgroup>
-                        <optgroup label="Nature's Bounty">
+                        
+                        <optgroup label="Seeds & Nuts (NEW)">
+                            <option value="peanut">Peanuts</option>
+                            <option value="almond">Almonds</option>
+                            <option value="walnut">Walnuts</option>
+                            <option value="cashew">Cashews</option>
+                            <option value="macadamia">Macadamia Nuts</option>
+                            <option value="pecan">Pecans</option>
+                            <option value="pistachio">Pistachios</option>
+                            <option value="hazelnut">Hazelnuts</option>
+                            <option value="brazil_nut">Brazil Nuts</option>
+                            <option value="pine_nut">Pine Nuts</option>
+                            <option value="sunflower_seed">Sunflower Seeds</option>
+                            <option value="pumpkin_seed">Pumpkin Seeds</option>
+                            <option value="chia_seed">Chia Seeds</option>
+                            <option value="flaxseed">Flaxseeds</option>
+                            <option value="sesame_seed">Sesame Seeds</option>
+                        </optgroup>
+
+                        <optgroup label="Nature's Bounty (Original)">
                             <option value="apple">Apples</option>
                             <option value="avocado">Avocado</option>
                             <option value="banana">Bananas</option>
@@ -291,7 +311,7 @@
                             <option value="broccoli">Broccoli</option>
                             <option value="carrot">Carrots</option>
                             <option value="cherries">Cherries</option>
-                            <option value="citrus">Citrus (Lemon/Orange)</option>
+                            <option value="citrus">Citrus (Lemon/Orange/Lime)</option>
                             <option value="grapes">Grapes & Raisins</option>
                             <option value="mushroom">Mushrooms (Wild/Store)</option>
                             <option value="onion">Onions & Garlic</option>
@@ -302,6 +322,69 @@
                             <option value="nightshade">Tomato Stems/Potatoes</option>
                             <option value="watermelon">Watermelon</option>
                         </optgroup>
+
+                        <optgroup label="Orchard & Tropics (NEW Fruits)">
+                            <option value="mango">Mango</option>
+                            <option value="papaya">Papaya</option>
+                            <option value="pear">Pear</option>
+                            <option value="kiwi">Kiwi</option>
+                            <option value="coconut">Coconut</option>
+                            <option value="dragon_fruit">Dragon Fruit</option>
+                            <option value="guava">Guava</option>
+                            <option value="pomegranate">Pomegranate</option>
+                            <option value="apricot">Apricot</option>
+                            <option value="blackberry">Blackberry</option>
+                            <option value="cranberry">Cranberry</option>
+                            <option value="fig">Fig</option>
+                            <option value="grapefruit">Grapefruit</option>
+                            <option value="lychee">Lychee</option>
+                            <option value="rambutan">Rambutan</option>
+                            <option value="durian">Durian</option>
+                            <option value="passion_fruit">Passion Fruit</option>
+                            <option value="starfruit">Starfruit (Carambola)</option>
+                            <option value="persimmon">Persimmon</option>
+                            <option value="plum">Plum</option>
+                            <option value="tangerine">Tangerine / Clementine</option>
+                            <option value="jackfruit">Jackfruit</option>
+                            <option value="mulberry">Mulberry</option>
+                            <option value="longan">Longan</option>
+                            <option value="soursop">Soursop</option>
+                            <option value="mangosteen">Mangosteen</option>
+                            <option value="honeydew">Honeydew Melon</option>
+                        </optgroup>
+
+                        <optgroup label="Garden & Greens (NEW Vegetables)">
+                            <option value="cabbage">Cabbage</option>
+                            <option value="cauliflower">Cauliflower</option>
+                            <option value="lettuce">Lettuce</option>
+                            <option value="cucumber">Cucumber</option>
+                            <option value="eggplant">Eggplant</option>
+                            <option value="bell_pepper">Bell Pepper</option>
+                            <option value="zucchini">Zucchini</option>
+                            <option value="pumpkin">Pumpkin</option>
+                            <option value="radish">Radish</option>
+                            <option value="green_beans">Green Beans</option>
+                            <option value="peas">Peas / Snow Peas</option>
+                            <option value="corn">Corn</option>
+                            <option value="sweet_potato">Sweet Potato / Yam</option>
+                            <option value="asparagus">Asparagus</option>
+                            <option value="beetroot">Beetroot</option>
+                            <option value="celery">Celery</option>
+                            <option value="kale">Kale</option>
+                            <option value="leek">Leek</option>
+                            <option value="okra">Okra</option>
+                            <option value="turnip">Turnip</option>
+                            <option value="artichoke">Artichoke</option>
+                            <option value="brussels_sprouts">Brussels Sprouts</option>
+                            <option value="bok_choy">Bok Choy</option>
+                            <option value="swiss_chard">Swiss Chard</option>
+                            <option value="arugula">Arugula / Watercress</option>
+                            <option value="mustard_greens">Mustard & Collard Greens</option>
+                            <option value="parsnip">Parsnip</option>
+                            <option value="fennel">Fennel</option>
+                            <option value="endive">Endive</option>
+                        </optgroup>
+
                         <optgroup label="The Pantry">
                             <option value="alcohol">Alcohol (Ethanol)</option>
                             <option value="caffeine">Caffeine (Coffee/Tea)</option>
@@ -363,121 +446,117 @@
 
     <script>
         const foodDatabase = {
-            // MEAT CATEGORY
-            "lean_beef": {
-                dog: { status: "safe", msg: "SAFE: High Bioavailability.", why: "Cooked lean beef provides essential Heme iron and complete amino acids. Ensure it is plain; salt or human seasoning triggers ion toxicosis and kidney strain." },
-                cat: { status: "safe", msg: "SAFE: Essential Taurine.", why: "As obligate carnivores, cats require the Taurine in beef for retinal health and cardiac muscle function. Lack of taurine leads to irreversible DCM (dilated cardiomyopathy)." },
-                rabbit: { status: "toxic", msg: "DANGER: Hindgut Failure.", why: "Rabbits are evolved for high-fiber forage. Animal protein destroys their cecal microflora, leading to fatal enterotoxemia and GI shutdown." },
-                ferret: { status: "safe", msg: "SAFE: Metabolic Match.", why: "Ferrets have a 3-4 hour GI transit time and zero ability to digest plants. Animal protein is their only viable energy source." },
-                all: { status: "safe", msg: "SAFE: Nutrient Dense.", why: "Safe for omnivores/carnivores if cooked and unseasoned. High iron supports red blood cell production." }
-            },
-            "chicken": {
-                all: { status: "safe", msg: "SAFE: Lean Protein.", why: "Boiled, unseasoned chicken breast is the standard 'bland diet.' It is 98% digestible for most mammals and carries the lowest risk of gastric irritation." }
-            },
-            "pork_bacon": {
-                dog: { status: "warning", msg: "CAUTION: Pancreatitis Risk.", why: "The high lipid (fat) density in bacon triggers an overproduction of digestive enzymes, causing the pancreas to become inflamed and potentially 'self-digest.' This is a critical medical emergency." },
-                hedgehog: { status: "toxic", msg: "DANGER: Hepatic Lipidosis.", why: "Small insectivores cannot process the saturated fats in pork, leading to rapid fatty liver disease and metabolic collapse." },
-                all: { status: "warning", msg: "CAUTION: Hypernatremia.", why: "High salt levels in cured pork cause osmotic imbalance, leading to brain swelling (salt poisoning) in smaller pets." }
-            },
-            "raw_fish": {
-                cat: { status: "warning", msg: "CAUTION: Thiaminase Enzyme.", why: "Raw fish contains Thiaminase, which destroys Vitamin B1 (Thiamine). Deficiency leads to 'stargazing' (neurological circling) and seizures." },
-                dog: { status: "warning", msg: "CAUTION: SPD Pathogen.", why: "Raw freshwater fish can carry Neorickettsia bacteria, causing Salmon Poisoning Disease, which is 90% fatal in dogs if untreated." },
-                all: { status: "warning", msg: "CAUTION: Pathogen Risk.", why: "Salmonella and Listeria risks are high in raw seafood, impacting both animal and human handlers." }
-            },
-            "liver": {
-                dog: { status: "warning", msg: "CAUTION: Hypervitaminosis A.", why: "Liver contains toxic levels of Vitamin A if fed regularly. This fat-soluble vitamin causes painful bone spurs (spondylosis) along the spine." },
-                all: { status: "warning", msg: "CAUTION: Copper/A Toxicity.", why: "Organ meats are vital in tiny amounts (under 5%) but cause organ-shattering vitamin toxicity if used as a staple diet." }
-            },
-            "processed_meat": {
-                all: { status: "toxic", msg: "DANGER: Nitrates & Additives.", why: "Salami and Hot Dogs contain Nitrates that interfere with oxygen transport in the blood (Methemoglobinemia). They also often contain hidden garlic/onion powder toxins." }
-            },
-            "cooked_bones": {
-                all: { status: "toxic", msg: "DANGER: Internal Perforation.", why: "Cooking makes bones brittle and crystalline. They splinter into razor shards that can puncture the esophagus or stomach, requiring invasive surgery." }
-            },
+            // --- MEATS ---
+            "lean_beef": { dog: { status: "safe", msg: "SAFE: High Bioavailability.", why: "Cooked lean beef provides essential Heme iron. Ensure it is plain." }, cat: { status: "safe", msg: "SAFE: Essential Taurine.", why: "Cats require the Taurine in beef for retinal health." }, rabbit: { status: "toxic", msg: "DANGER: Hindgut Failure.", why: "Animal protein destroys their cecal microflora." }, ferret: { status: "safe", msg: "SAFE: Metabolic Match.", why: "Animal protein is their only viable energy source." }, all: { status: "safe", msg: "SAFE: Nutrient Dense.", why: "Safe for omnivores/carnivores if cooked and unseasoned." } },
+            "chicken": { all: { status: "safe", msg: "SAFE: Lean Protein.", why: "Boiled, unseasoned chicken breast is 98% digestible for most mammals." } },
+            "pork_bacon": { dog: { status: "warning", msg: "CAUTION: Pancreatitis Risk.", why: "High lipid density triggers pancreatic inflammation." }, hedgehog: { status: "toxic", msg: "DANGER: Hepatic Lipidosis.", why: "Saturated fats lead to rapid fatty liver disease." }, all: { status: "warning", msg: "CAUTION: Hypernatremia.", why: "High salt in cured pork causes osmotic imbalance." } },
+            "raw_fish": { cat: { status: "warning", msg: "CAUTION: Thiaminase Enzyme.", why: "Destroys Vitamin B1 (Thiamine), leading to seizures." }, dog: { status: "warning", msg: "CAUTION: SPD Pathogen.", why: "Can carry Neorickettsia bacteria causing Salmon Poisoning Disease." }, all: { status: "warning", msg: "CAUTION: Pathogen Risk.", why: "Salmonella and Listeria risks are high." } },
+            "liver": { dog: { status: "warning", msg: "CAUTION: Hypervitaminosis A.", why: "Excess causes painful bone spurs (spondylosis)." }, all: { status: "warning", msg: "CAUTION: Toxicity Risk.", why: "Organ meats cause vitamin toxicity if used as a staple diet." } },
+            "processed_meat": { all: { status: "toxic", msg: "DANGER: Nitrates.", why: "Nitrates interfere with oxygen transport (Methemoglobinemia)." } },
+            "cooked_bones": { all: { status: "toxic", msg: "DANGER: Internal Perforation.", why: "Brittle bones splinter and puncture the GI tract." } },
 
-            // NATURE'S BOUNTY
-            "apple": {
-                dog: { status: "safe", msg: "SAFE: Fiber & Vitamin C.", why: "Flesh is safe, but seeds contain amygdalin, which releases cyanide. Ensure the fruit is cored and deseeded." },
-                ferret: { status: "toxic", msg: "DANGER: Insulinoma Risk.", why: "Ferrets cannot process complex sugars. Fructose causes pancreatic spikes that lead to fatal tumors (Insulinomas)." },
-                all: { status: "safe", msg: "SAFE: Low-Calorie Snack.", why: "Generally safe for omnivores in small amounts. Always remove seeds to prevent cyanide exposure." }
-            },
-            "blueberries": {
-                dog: { status: "safe", msg: "SAFE: Anthocyanins.", why: "High in antioxidants that protect cells from oxidative stress. Low glycemic index makes them a safe fruit choice." },
-                all: { status: "safe", msg: "SAFE: Superfood.", why: "Rich in Vitamin K and Manganese, providing a healthy boost for birds and most omnivorous mammals." }
-            },
-            "banana": {
-                rabbit: { status: "warning", msg: "CAUTION: Cecal Bloom.", why: "High starch and sugar can cause a 'bad' bacterial bloom in the rabbit's gut, leading to painful and potentially fatal gas/bloat." },
-                all: { status: "safe", msg: "SAFE: Potassium Rich.", why: "Excellent source of magnesium and electrolytes, though high sugar requires strict portion control." }
-            },
-            "broccoli": {
-                horse: { status: "toxic", msg: "DANGER: Flatulent Colic.", why: "Cruciferous veggies produce massive gas in the horse's colon. Because horses cannot belch or vomit, this gas causes life-threatening colic." },
-                dog: { status: "warning", msg: "CAUTION: Isothiocyanates.", why: "Contains gastric irritants. If broccoli exceeds 10% of total diet, it can cause severe GI distress and thyroid interference." },
-                all: { status: "warning", msg: "CAUTION: GI Gas.", why: "Causes significant bloating and flatulence in most small mammals." }
-            },
-            "carrot": {
-                dog: { status: "safe", msg: "SAFE: Beta-Carotene.", why: "Excellent low-calorie treat high in fiber and beta-carotene (Vitamin A). Crunching raw carrots can also help remove plaque from teeth." },
-                rabbit: { status: "warning", msg: "CAUTION: High Sugar.", why: "Despite popular media, root vegetables are high in carbohydrates and sugars. Carrots should be a rare treat, not a staple, as excess sugar disrupts their specialized gut flora." },
-                horse: { status: "safe", msg: "SAFE: Traditional Forage.", why: "Highly palatable and provides excellent moisture and Vitamin A without overwhelming their digestive tract." },
-                all: { status: "safe", msg: "SAFE: Root Vegetable.", why: "Generally safe and nutritious. However, small herbivores should consume them sparingly due to the relatively high sugar content compared to leafy greens." }
-            },
-            "cherries": {
-                all: { status: "toxic", msg: "DANGER: Cyanogenic Glycosides.", why: "The pits and stems contain cyanide, which inhibits cytochrome c oxidase (cell oxygen use). Symptoms include dilated pupils and respiratory failure." }
-            },
-            "mushroom": {
-                all: { status: "warning", msg: "CAUTION: Mycotoxins.", why: "Store-bought are safe, but wild mushrooms can contain Amatoxins that cause irreversible liver and kidney destruction within 24 hours." }
-            },
-            "avocado": {
-                bird: { status: "toxic", msg: "FATAL: Persin Toxin.", why: "Persin causes heart muscle death (myocardial necrosis) in birds, leading to rapid respiratory failure and death." },
-                all: { status: "toxic", msg: "DANGER: Pulmonary Congestion.", why: "Highly toxic to rabbits and guinea pigs; causes fluid buildup around the heart and lungs." }
-            },
-            "grapes": {
-                dog: { status: "toxic", msg: "CRITICAL: Tartaric Acid.", why: "Grapes cause sudden, acute renal (kidney) failure. The exact toxic mechanism was recently identified as tartaric acid poisoning." },
-                all: { status: "warning", msg: "CAUTION: Fermentation/Bloat.", why: "High sugar content leads to dangerous gas buildup in small hindgut fermenters." }
-            },
-            "citrus": {
-                rat: { status: "toxic", msg: "DANGER: Renal Cancer (Males).", why: "In male rats, d-limonene binds to alpha-2u-globulin protein, causing kidney damage and cancer. Females are unaffected." },
-                all: { status: "warning", msg: "CAUTION: Gastric Acid.", why: "The high citric acid content is corrosive to the stomach lining of most domestic animals." }
-            },
-            "onion": {
-                all: { status: "toxic", msg: "FATAL: Oxidative Damage.", why: "Contains N-propyl disulfide, which causes red blood cells to burst (Heinz Body Anemia), leading to oxygen deprivation." }
-            },
-            "peach": {
-                all: { status: "toxic", msg: "DANGER: Cyanide in Pit.", why: "While the peach flesh is safe, the pit (stone) contains amygdalin, which breaks down into fatal cyanide. The pit is also a severe choking and blockage hazard." }
-            },
-            "pineapple": {
-                dog: { status: "safe", msg: "SAFE: Bromelain.", why: "Contains bromelain, an enzyme that aids protein digestion. Must be peeled and cored." },
-                all: { status: "warning", msg: "CAUTION: Acidity.", why: "The high acidity and sugar content can cause severe stomach upset and mouth sores in small mammals if overfed." }
-            },
-            "spinach": {
-                reptile: { status: "warning", msg: "CAUTION: Calcium Binder.", why: "Oxalates bind to calcium, preventing absorption. This is a primary driver of Metabolic Bone Disease (MBD) in lizards." },
-                all: { status: "warning", msg: "CAUTION: Bladder Stones.", why: "High oxalate levels contribute to urolithiasis (stones) in guinea pigs and rabbits." }
-            },
-            "strawberry": {
-                all: { status: "safe", msg: "SAFE: Antioxidants.", why: "Rich in Vitamin C and an enzyme that can help whiten teeth. Must be fed in moderation due to natural sugars." }
-            },
-            "watermelon": {
-                dog: { status: "safe", msg: "SAFE: Hydrating Snack.", why: "The flesh is 92% water and safe. However, the rind can cause intestinal blockage, and seeds can cause digestive upset." },
-                rabbit: { status: "warning", msg: "CAUTION: Sugar Content.", why: "While non-toxic, the high sugar and water content can disrupt their delicate cecal flora and cause diarrhea." },
-                all: { status: "safe", msg: "SAFE: Refreshing.", why: "Safe in moderation. Always remove seeds and rind to prevent choking or impaction." }
-            },
+            // --- NUTS & SEEDS ---
+            "macadamia": { dog: { status: "toxic", msg: "DANGER: Neurological Toxicity.", why: "Causes macadamia nut toxicosis: weakness, hyperthermia, and hind limb paralysis." }, all: { status: "warning", msg: "CAUTION: High Fat.", why: "Extreme fat content can trigger severe GI upset." } },
+            "walnut": { horse: { status: "toxic", msg: "DANGER: Laminitis.", why: "Black walnuts cause severe hoof inflammation." }, all: { status: "warning", msg: "CAUTION: Tremorgenic Mycotoxins.", why: "Often moldy, producing toxins that cause seizures." } },
+            "pecan": { all: { status: "warning", msg: "CAUTION: Aflatoxin Risk.", why: "Prone to mold (juglone/aflatoxins) which causes liver damage and neurological tremors." } },
+            "peanut": { bird: { status: "warning", msg: "CAUTION: Aflatoxins.", why: "Raw peanuts in shells carry fungus fatal to birds. Roasted is safer." }, all: { status: "safe", msg: "SAFE: High Protein.", why: "Safe in moderation. Must be unsalted to prevent sodium poisoning." } },
+            "almond": { all: { status: "warning", msg: "CAUTION: Choking Hazard.", why: "Not inherently toxic, but poorly digested and can cause intestinal blockages." } },
+            "cashew": { all: { status: "safe", msg: "SAFE: In Moderation.", why: "Cooked cashews are safe. Raw cashews contain urushiol (like poison ivy)." } },
+            "pistachio": { all: { status: "warning", msg: "CAUTION: Fat & Shells.", why: "High fat causes pancreatitis; shells cause severe bowel impaction." } },
+            "hazelnut": { all: { status: "safe", msg: "SAFE: Nutrient Dense.", why: "Non-toxic, but strictly limit intake due to obesity and choking risks." } },
+            "brazil_nut": { all: { status: "warning", msg: "CAUTION: Selenium Toxicity.", why: "Extremely high in selenium. Eating too many causes selenosis (hair loss, neurological issues)." } },
+            "pine_nut": { all: { status: "safe", msg: "SAFE: High Phosphorus.", why: "Safe in small quantities, but high fat limits daily usage." } },
+            "sunflower_seed": { bird: { status: "safe", msg: "SAFE: Staple Food.", why: "Excellent source of Vitamin E, though high fat means it shouldn't be the *only* food." }, all: { status: "safe", msg: "SAFE: Vitamin E.", why: "Safe and nutritious when shelled and unsalted." } },
+            "pumpkin_seed": { all: { status: "safe", msg: "SAFE: Natural Anthelmintic.", why: "Contains cucurbitacin, which can help paralyze and expel intestinal worms." } },
+            "chia_seed": { all: { status: "safe", msg: "SAFE: Omega-3s.", why: "Highly nutritious. Always soak them first, as they absorb massive water and can swell in the esophagus." } },
+            "flaxseed": { all: { status: "safe", msg: "SAFE: Alpha-Linolenic Acid.", why: "Must be ground to be digested properly. Excellent for coat and skin health." } },
+            "sesame_seed": { all: { status: "safe", msg: "SAFE: Calcium Rich.", why: "Easily digestible and provides bioavailable calcium and fiber." } },
 
-            // PANTRY CATEGORY
-            "chocolate": {
-                all: { status: "toxic", msg: "CRITICAL: Theobromine.", why: "Animals cannot metabolize theobromine. It builds up to toxic levels, causing heart arrhythmias, seizures, and death." }
-            },
-            "xylitol": {
-                dog: { status: "toxic", msg: "FATAL: Hypoglycemia.", why: "Triggers a massive insulin surge. Blood sugar crashes instantly, leading to seizures and total liver failure." },
-                all: { status: "toxic", msg: "DANGER: Hepatic Failure.", why: "Extremely toxic even in microscopic amounts to almost all non-human mammals." }
-            },
-            "alcohol": {
-                all: { status: "toxic", msg: "FATAL: Ethanol Toxicity.", why: "Animals have tiny livers and high metabolic rates. Alcohol causes rapid central nervous system collapse." }
-            },
-            "caffeine": {
-                all: { status: "toxic", msg: "CRITICAL: Cardiac Stimulant.", why: "Methylxanthines cause the heart to race uncontrollably, leading to tremors and cardiac arrest." }
-            },
-            "dairy": {
-                all: { status: "warning", msg: "CAUTION: Lactose Intolerance.", why: "Most adult mammals lack 'lactase.' Dairy causes osmotic diarrhea, drawing water into the gut and causing dehydration." }
-            }
+            // --- ORIGINAL NATURE'S BOUNTY ---
+            "apple": { dog: { status: "safe", msg: "SAFE: Fiber.", why: "Flesh is safe. Seeds contain cyanide." }, ferret: { status: "toxic", msg: "DANGER: Insulinoma.", why: "Fructose causes fatal pancreatic tumors." }, all: { status: "safe", msg: "SAFE: Snack.", why: "Remove seeds." } },
+            "blueberries": { all: { status: "safe", msg: "SAFE: Anthocyanins.", why: "High in antioxidants protecting cells from oxidative stress." } },
+            "banana": { rabbit: { status: "warning", msg: "CAUTION: Cecal Bloom.", why: "High sugar disrupts gut flora." }, all: { status: "safe", msg: "SAFE: Potassium.", why: "Good for electrolytes." } },
+            "broccoli": { horse: { status: "toxic", msg: "DANGER: Colic.", why: "Causes fatal gas." }, dog: { status: "warning", msg: "CAUTION: Isothiocyanates.", why: "Gastric irritant." }, all: { status: "warning", msg: "CAUTION: GI Gas.", why: "Causes bloating." } },
+            "carrot": { dog: { status: "safe", msg: "SAFE: Beta-Carotene.", why: "Great low-calorie treat." }, rabbit: { status: "warning", msg: "CAUTION: Sugar.", why: "High carbs; use sparingly." }, all: { status: "safe", msg: "SAFE: Root Veg.", why: "Nutritious but sweet." } },
+            "cherries": { all: { status: "toxic", msg: "DANGER: Cyanide.", why: "Pits contain amygdalin (cyanide)." } },
+            "mushroom": { all: { status: "warning", msg: "CAUTION: Mycotoxins.", why: "Wild mushrooms cause rapid liver failure." } },
+            "avocado": { bird: { status: "toxic", msg: "FATAL: Persin.", why: "Causes myocardial necrosis." }, all: { status: "toxic", msg: "DANGER: Pulmonary Congestion.", why: "Highly toxic to many pets." } },
+            "grapes": { dog: { status: "toxic", msg: "CRITICAL: Tartaric Acid.", why: "Causes sudden acute renal failure." }, all: { status: "warning", msg: "CAUTION: Bloat.", why: "High sugar ferments rapidly." } },
+            "citrus": { rat: { status: "toxic", msg: "DANGER: Renal Cancer.", why: "D-limonene causes kidney damage in males." }, all: { status: "warning", msg: "CAUTION: Gastric Acid.", why: "Corrosive to stomach lining." } },
+            "onion": { all: { status: "toxic", msg: "FATAL: Oxidative Damage.", why: "Contains N-propyl disulfide causing Heinz Body Anemia." } },
+            "peach": { all: { status: "toxic", msg: "DANGER: Cyanide Pit.", why: "The pit contains fatal cyanide and is a blockage hazard." } },
+            "pineapple": { all: { status: "safe", msg: "SAFE: Bromelain.", why: "Safe in moderation. Aids protein digestion." } },
+            "spinach": { reptile: { status: "warning", msg: "CAUTION: Calcium Binder.", why: "Oxalates cause Metabolic Bone Disease." }, all: { status: "warning", msg: "CAUTION: Bladder Stones.", why: "High oxalates cause urolithiasis." } },
+            "strawberry": { all: { status: "safe", msg: "SAFE: Antioxidants.", why: "Rich in Vitamin C. Feed in moderation." } },
+            "nightshade": { all: { status: "toxic", msg: "DANGER: Solanine.", why: "Green parts/stems contain toxic solanine alkaloids." } },
+            "watermelon": { all: { status: "safe", msg: "SAFE: Hydration.", why: "92% water. Remove rind and seeds." } },
+
+            // --- NEW FRUITS ---
+            "mango": { all: { status: "safe", msg: "SAFE: Vitamin A.", why: "Flesh is safe. The pit is a severe choking hazard and contains trace cyanide." } },
+            "papaya": { all: { status: "safe", msg: "SAFE: Papain Enzyme.", why: "Helps digestion. Safe in moderation without seeds." } },
+            "pear": { all: { status: "safe", msg: "SAFE: Fiber.", why: "Flesh is safe, but seeds contain cyanogenic glycosides." } },
+            "kiwi": { all: { status: "safe", msg: "SAFE: Vitamin C.", why: "Safe in moderation. High acidity can cause minor stomach upset." } },
+            "coconut": { all: { status: "warning", msg: "CAUTION: Medium-Chain Triglycerides.", why: "Flesh and oil are non-toxic, but the extremely high fat content readily causes loose stools and GI upset." } },
+            "dragon_fruit": { all: { status: "safe", msg: "SAFE: Low Acid.", why: "Very safe and hydrating. Seeds are tiny and harmless." } },
+            "guava": { all: { status: "safe", msg: "SAFE: Iron & Fiber.", why: "Flesh is safe. Remove seeds to prevent digestive blockages." } },
+            "pomegranate": { all: { status: "warning", msg: "CAUTION: Tannins & Seeds.", why: "Non-toxic, but the seeds and tannins cause severe vomiting/diarrhea if eaten in volume." } },
+            "apricot": { all: { status: "toxic", msg: "DANGER: Cyanide Pit.", why: "The pit (stone) contains lethal levels of amygdalin, leading to cellular suffocation." } },
+            "blackberry": { all: { status: "safe", msg: "SAFE: Low Glycemic.", why: "Excellent source of antioxidants and very safe for most mammals and birds." } },
+            "cranberry": { all: { status: "safe", msg: "SAFE: Urinary Health.", why: "Safe and helps prevent UTIs, but extremely tart. Never feed dried/sugared versions." } },
+            "fig": { all: { status: "warning", msg: "CAUTION: Ficusin Enzyme.", why: "Contains ficusin, a sap enzyme that can cause allergic dermatitis and severe GI inflammation." } },
+            "grapefruit": { all: { status: "toxic", msg: "DANGER: Psoralens.", why: "Contains psoralens and essential oils that are highly toxic to dogs, cats, and horses." } },
+            "lychee": { all: { status: "warning", msg: "CAUTION: Hypoglycin A.", why: "Unripe fruit contains toxins that violently crash blood sugar. Pits are toxic." } },
+            "rambutan": { all: { status: "warning", msg: "CAUTION: Saponins.", why: "Flesh is okay, but skin and seeds contain toxic saponins." } },
+            "durian": { all: { status: "warning", msg: "CAUTION: Extreme Calories.", why: "Not strictly toxic, but the massive fat/sugar density is overwhelming to small pet livers." } },
+            "passion_fruit": { all: { status: "warning", msg: "CAUTION: Cyanide in Skin.", why: "The purple skin and unripe flesh contain cyanogenic glycosides." } },
+            "starfruit": { all: { status: "toxic", msg: "DANGER: Acute Nephrotoxicity.", why: "Contains massive amounts of soluble oxalates. Causes sudden, irreversible kidney death." } },
+            "persimmon": { horse: { status: "toxic", msg: "DANGER: Phytobezoars.", why: "Tannins glue together in the stomach, forming rock-solid blockages." }, all: { status: "warning", msg: "CAUTION: Intestinal Blockage.", why: "Seeds and tannins can severely inflame the small intestine." } },
+            "plum": { all: { status: "toxic", msg: "DANGER: Prunus Family Toxin.", why: "Stems, leaves, and pits contain lethal hydrogen cyanide." } },
+            "tangerine": { all: { status: "warning", msg: "CAUTION: Citric Acid.", why: "Peels contain toxic essential oils (limonene). Flesh is safe but highly acidic." } },
+            "jackfruit": { all: { status: "warning", msg: "CAUTION: Latex Allergy.", why: "Contains natural latex sap. Seeds are toxic unless thoroughly boiled." } },
+            "mulberry": { all: { status: "warning", msg: "CAUTION: Hallucinogenic Sap.", why: "Ripe berries are safe. Unripe berries and milky sap contain hallucinogenic/toxic alkaloids." } },
+            "longan": { all: { status: "warning", msg: "CAUTION: High Sugar.", why: "Flesh is safe but acts as pure sugar in the animal's bloodstream. Pits are choking hazards." } },
+            "soursop": { all: { status: "toxic", msg: "DANGER: Annonacin Toxin.", why: "Seeds and skin contain annonacin, a neurotoxin linked to atypical Parkinson's disease." } },
+            "mangosteen": { all: { status: "safe", msg: "SAFE: Xanthones.", why: "Flesh is safe in tiny amounts, but the thick rind is highly astringent and indigestible." } },
+            "honeydew": { all: { status: "safe", msg: "SAFE: High Water Content.", why: "Very safe and refreshing. Always remove the rind and seeds." } },
+
+            // --- NEW VEGETABLES ---
+            "cabbage": { rabbit: { status: "warning", msg: "CAUTION: Stasis Risk.", why: "Cruciferous gas slows the gut, risking GI stasis." }, all: { status: "warning", msg: "CAUTION: Thiocyanate.", why: "Can suppress the thyroid gland if fed raw in massive amounts." } },
+            "cauliflower": { all: { status: "warning", msg: "CAUTION: Flatulence.", why: "Safe in small amounts, but rapidly ferments in the gut causing painful gas." } },
+            "lettuce": { all: { status: "safe", msg: "SAFE: Hydration.", why: "Safe. Iceberg has zero nutrition; darker lettuces (Romaine) provide Vitamin K." } },
+            "cucumber": { all: { status: "safe", msg: "SAFE: Low Calorie.", why: "96% water. Excellent crunch for dogs and safe for almost all herbivores." } },
+            "eggplant": { all: { status: "warning", msg: "CAUTION: Solanine.", why: "Member of the nightshade family. The raw flesh, leaves, and stems are toxic. Must be fully cooked." } },
+            "bell_pepper": { all: { status: "safe", msg: "SAFE: Vitamin C.", why: "Non-toxic nightshade. Red peppers have massive Vitamin C. Always remove stems and seeds." } },
+            "zucchini": { all: { status: "safe", msg: "SAFE: Digestible Fiber.", why: "Highly digestible, safe raw or cooked. Excellent for regulating dog/cat bowels." } },
+            "pumpkin": { all: { status: "safe", msg: "SAFE: Miracle Fiber.", why: "Plain, cooked pumpkin regulates GI tracts, curing both diarrhea and constipation via soluble fiber." } },
+            "radish": { all: { status: "warning", msg: "CAUTION: Spicy Oils.", why: "Non-toxic, but the spicy compounds (isothiocyanates) cause severe stomach cramps in pets." } },
+            "green_beans": { all: { status: "safe", msg: "SAFE: Satiety.", why: "Excellent low-calorie filler to help obese pets lose weight safely." } },
+            "peas": { all: { status: "warning", msg: "CAUTION: Purines.", why: "Generally safe, but high purine content makes them dangerous for birds/dogs prone to uric acid stones." } },
+            "corn": { dog: { status: "warning", msg: "CAUTION: Cob Impaction.", why: "Kernels are safe, but the cob is the #1 cause of fatal intestinal blockages requiring surgery." }, all: { status: "safe", msg: "SAFE: Carbohydrate.", why: "Digestible if cooked, but serves mostly as filler." } },
+            "sweet_potato": { all: { status: "safe", msg: "SAFE: Complex Carbs.", why: "Must be cooked. Raw potatoes contain trypsin inhibitors that stop protein digestion." } },
+            "asparagus": { all: { status: "safe", msg: "SAFE: Folic Acid.", why: "Safe, but very tough to chew raw. Cooking makes it a healthy, fibrous snack." } },
+            "beetroot": { all: { status: "warning", msg: "CAUTION: High Oxalate.", why: "Safe flesh, but high oxalates can cause kidney stones. Turns urine red, which can mimic internal bleeding." } },
+            "celery": { all: { status: "safe", msg: "SAFE: Breath Freshener.", why: "Safe and crunchy. Cut into small pieces to prevent the stringy fibers from wrapping around intestines." } },
+            "kale": { all: { status: "warning", msg: "CAUTION: Calcium Oxalate & Goitrogens.", why: "Binds calcium (causing bone loss) and suppresses thyroid function if fed daily." } },
+            "leek": { all: { status: "toxic", msg: "FATAL: Allium Family.", why: "Identical to onions. Destroys mammalian red blood cells, causing severe internal suffocation." } },
+            "okra": { all: { status: "safe", msg: "SAFE: Mucilage.", why: "The slimy texture (mucilage) actually coats and soothes the digestive tract." } },
+            "turnip": { all: { status: "warning", msg: "CAUTION: Goitrogenic.", why: "Safe cooked, but raw turnips interfere with iodine uptake in the thyroid." } },
+            "artichoke": { all: { status: "safe", msg: "SAFE: Prebiotics.", why: "Contains inulin, a great prebiotic for gut bacteria, but must be fully cooked." } },
+            "brussels_sprouts": { all: { status: "warning", msg: "CAUTION: Extreme Gas.", why: "Highly nutritious but causes extreme, sometimes painful, flatulence in pets." } },
+            "bok_choy": { reptile: { status: "warning", msg: "CAUTION: Calcium Disruption.", why: "Goitrogens disrupt metabolism." }, all: { status: "safe", msg: "SAFE: Calcium Rich.", why: "Safer than spinach, high in bioavailable calcium for herbivores." } },
+            "swiss_chard": { all: { status: "warning", msg: "CAUTION: Oxalic Acid.", why: "Extremely high in oxalates. Will cause kidney stones in small mammals and reptiles." } },
+            "arugula": { all: { status: "safe", msg: "SAFE: Bitter Greens.", why: "Nutritious for rabbits and birds. The peppery taste deters some pets, but it is non-toxic." } },
+            "mustard_greens": { all: { status: "warning", msg: "CAUTION: GI Irritant.", why: "Very high in spicy glucosinolates. Causes stomach inflammation in dogs/cats." } },
+            "parsnip": { all: { status: "warning", msg: "CAUTION: Furanocoumarins.", why: "Leaves and stems cause severe light-activated skin burns. The cooked root is safe." } },
+            "fennel": { all: { status: "safe", msg: "SAFE: Carminative.", why: "Actually helps reduce gas and bloating in the digestive tract. Safe for most." } },
+            "endive": { all: { status: "safe", msg: "SAFE: Calcium to Phosphorus.", why: "Excellent staple green for reptiles and small herbivores due to a perfect Ca:P ratio." } },
+
+            // --- PANTRY ---
+            "chocolate": { all: { status: "toxic", msg: "CRITICAL: Theobromine.", why: "Causes fatal heart arrhythmias and seizures." } },
+            "xylitol": { all: { status: "toxic", msg: "FATAL: Hypoglycemia.", why: "Triggers a massive insulin surge leading to total liver failure." } },
+            "alcohol": { all: { status: "toxic", msg: "FATAL: Ethanol Toxicity.", why: "Causes rapid central nervous system collapse." } },
+            "caffeine": { all: { status: "toxic", msg: "CRITICAL: Cardiac Stimulant.", why: "Methylxanthines cause the heart to race uncontrollably to the point of cardiac arrest." } },
+            "dairy": { all: { status: "warning", msg: "CAUTION: Lactose Intolerance.", why: "Most adult mammals lack 'lactase.' Causes osmotic diarrhea." } }
         };
 
         function checkFoodSafety() {
@@ -497,7 +576,7 @@
             
             document.getElementById("result-status-text").innerText = data.status.toUpperCase();
             document.getElementById("result-title").innerText = data.msg;
-            document.getElementById("result-desc").innerText = `Toxicological Analysis for: ${species.toUpperCase()}`;
+            document.getElementById("result-desc").innerText = `Toxicological Analysis for: ${species.toUpperCase().replace('_', ' ')}`;
             document.getElementById("result-why").innerHTML = `<strong>Biological Explanation:</strong> ${data.why}`;
             
             card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
