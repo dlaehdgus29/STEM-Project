@@ -188,6 +188,32 @@
             display: block; 
             border-radius: 16px;
         }
+        
+        /* --- GALLERY --- */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .gallery-item {
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item img:hover {
+            transform: scale(1.05);
+        }
 
         footer {
             background: var(--emerald-deep);
@@ -208,6 +234,7 @@
         <div class="nav-links">
             <a href="#ai-tool">Analyzer</a>
             <a href="#intro-video">Video</a>
+            <a href="#gallery">Gallery</a>
             <a href="#our-story">Our Story</a>
         </div>
     </nav>
@@ -300,6 +327,24 @@
                 <source src="8_Second_Video.MP4.mp4" type="video/mp4">
                 <p style="color: white; padding: 20px;">Your browser does not support the video tag, or the file is not in the same folder as this HTML file.</p>
             </video>
+        </div>
+    </section>
+    
+    <section id="gallery" class="content-box">
+        <h2 style="margin-bottom:20px; font-family: 'Playfair Display';">Dietary Habits in Action</h2>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="http://googleusercontent.com/image_collection/image_retrieval/5592784612343411617" alt="Dog eating an apple">
+            </div>
+            <div class="gallery-item">
+                <img src="http://googleusercontent.com/image_collection/image_retrieval/2359389420828163129" alt="Cat eating chicken">
+            </div>
+            <div class="gallery-item">
+                <img src="http://googleusercontent.com/image_collection/image_retrieval/17835514562350191162" alt="Rabbit eating a carrot">
+            </div>
+            <div class="gallery-item">
+                <img src="http://googleusercontent.com/image_collection/image_retrieval/7174975926954401251" alt="Bird eating blueberries">
+            </div>
         </div>
     </section>
 
