@@ -295,8 +295,12 @@
                             <option value="grapes">Grapes & Raisins</option>
                             <option value="mushroom">Mushrooms (Wild/Store)</option>
                             <option value="onion">Onions & Garlic</option>
+                            <option value="peach">Peaches</option>
+                            <option value="pineapple">Pineapple</option>
                             <option value="spinach">Spinach</option>
+                            <option value="strawberry">Strawberries</option>
                             <option value="nightshade">Tomato Stems/Potatoes</option>
+                            <option value="watermelon">Watermelon</option>
                         </optgroup>
                         <optgroup label="The Pantry">
                             <option value="alcohol">Alcohol (Ethanol)</option>
@@ -437,9 +441,24 @@
             "onion": {
                 all: { status: "toxic", msg: "FATAL: Oxidative Damage.", why: "Contains N-propyl disulfide, which causes red blood cells to burst (Heinz Body Anemia), leading to oxygen deprivation." }
             },
+            "peach": {
+                all: { status: "toxic", msg: "DANGER: Cyanide in Pit.", why: "While the peach flesh is safe, the pit (stone) contains amygdalin, which breaks down into fatal cyanide. The pit is also a severe choking and blockage hazard." }
+            },
+            "pineapple": {
+                dog: { status: "safe", msg: "SAFE: Bromelain.", why: "Contains bromelain, an enzyme that aids protein digestion. Must be peeled and cored." },
+                all: { status: "warning", msg: "CAUTION: Acidity.", why: "The high acidity and sugar content can cause severe stomach upset and mouth sores in small mammals if overfed." }
+            },
             "spinach": {
                 reptile: { status: "warning", msg: "CAUTION: Calcium Binder.", why: "Oxalates bind to calcium, preventing absorption. This is a primary driver of Metabolic Bone Disease (MBD) in lizards." },
                 all: { status: "warning", msg: "CAUTION: Bladder Stones.", why: "High oxalate levels contribute to urolithiasis (stones) in guinea pigs and rabbits." }
+            },
+            "strawberry": {
+                all: { status: "safe", msg: "SAFE: Antioxidants.", why: "Rich in Vitamin C and an enzyme that can help whiten teeth. Must be fed in moderation due to natural sugars." }
+            },
+            "watermelon": {
+                dog: { status: "safe", msg: "SAFE: Hydrating Snack.", why: "The flesh is 92% water and safe. However, the rind can cause intestinal blockage, and seeds can cause digestive upset." },
+                rabbit: { status: "warning", msg: "CAUTION: Sugar Content.", why: "While non-toxic, the high sugar and water content can disrupt their delicate cecal flora and cause diarrhea." },
+                all: { status: "safe", msg: "SAFE: Refreshing.", why: "Safe in moderation. Always remove seeds and rind to prevent choking or impaction." }
             },
 
             // PANTRY CATEGORY
